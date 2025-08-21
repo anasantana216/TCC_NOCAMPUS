@@ -1,0 +1,10 @@
+{
+  "/admin/poll-results": "pages/admin/poll-results.html",
+  "/admin/create-poll": "pages/admin/create-poll.html",
+  "/login": "pages/login.html",
+  "/": "pages/index.html",
+  "/_error": "pages/_error.js",
+  "/_app": "pages/_app.js",
+  "/_document": "pages/_document.js",
+  "/404": "pages/404.html"
+}
