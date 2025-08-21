@@ -10,6 +10,9 @@
     }
   ],
   "env": {
-    "NEXT_PUBLIC_API_URL": "https://nocampus-production.up.railway.app/api"
-  }
+    "NEXT_PUBLIC_API_URL": "https://nocampus-api.onrender.com/api",
+    "DATABASE_URL": "@database_url",
+    "JWT_SECRET": "@jwt_secret"
+  },
+  "regions": ["gru1"]
 }

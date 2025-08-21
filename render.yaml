@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: nocampus-api
+    env: node
+    buildCommand: cd server && npm install && npx prisma generate
+    startCommand: cd server && npm start
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: nocampus-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 8080
+
+databases:
+  - name: nocampus-db
+    plan: free
+    ipAllowList: []
