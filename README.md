@@ -1,36 +1,150 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NoCampus - Sistema de Gestão de Eventos UNASP
 
-## Getting Started
+## 📖 Visão Geral
 
-First, run the development server:
+O **NoCampus** é um sistema de gestão de eventos educacionais desenvolvido para o Centro Universitário Adventista de São Paulo (UNASP). O projeto tem como objetivo principal facilitar a criação de agendas para eventos escolares através de enquetes, melhorando a comunicação e organização de datas e horários.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Tecnologias
+
+- **Frontend**: Next.js 15, React 19, TypeScript
+- **Styling**: Tailwind CSS
+- **Autenticação**: NextAuth.js
+- **Banco de Dados**: Prisma ORM
+- **Qualidade de Código**: ESLint, Prettier, Husky
+- **Versionamento**: Git & GitHub
+
+## 👥 Equipe
+
+- **Clara Gabrielly**
+- **Ana Julia Boer**
+
+## 📁 Estrutura do Projeto
+
+```
+src/
+├── app/                    # App Router (Next.js 13+)
+├── components/             # Componentes React
+│   ├── ui/                # Componentes de interface básicos
+│   ├── forms/             # Formulários
+│   └── layout/            # Componentes de layout
+├── lib/                   # Utilitários e configurações
+├── types/                 # Definições TypeScript
+├── hooks/                 # Custom React hooks
+├── services/              # Serviços de API
+└── utils/                 # Funções utilitárias
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎯 Funcionalidades
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Para Alunos e Responsáveis:
+- **Login Seguro**: Autenticação com email institucional (@eaportal.unasp.br)
+- **Página Inicial**: Visualização de eventos e enquetes recentes
+- **Próximos Eventos**: Busca e participação em enquetes por categoria
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Para Administradores:
+- **Dashboard Administrativo**: Gestão completa de eventos
+- **Criação de Enquetes**: Ferramenta completa para criar e editar enquetes
+- **Análise de Respostas**: Visualização estatística das respostas
+- **Agenda Completa**: Calendário administrativo com todos os eventos
 
-## Learn More
+## 🛠️ Configuração do Ambiente
 
-To learn more about Next.js, take a look at the following resources:
+### Pré-requisitos
+- Node.js 18+ 
+- npm ou yarn
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Instalação
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Clone o repositório:
+```bash
+git clone https://github.com/anasantana216/TCC_NOCAMPUS.git
+cd tcc-nocampus
+```
 
-## Deploy on Vercel
+2. Instale as dependências:
+```bash
+npm install
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Configure as variáveis de ambiente:
+```bash
+cp .env.example .env.local
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. Execute o projeto:
+```bash
+npm run dev
+```
+
+5. Acesse: [http://localhost:3000](http://localhost:3000)
+
+## 📝 Scripts Disponíveis
+
+```bash
+npm run dev          # Inicia o servidor de desenvolvimento
+npm run build        # Build de produção
+npm run start        # Inicia o servidor de produção
+npm run lint         # Executa ESLint
+npm run lint:fix     # Corrige problemas do ESLint
+npm run format       # Formata código com Prettier
+npm run type-check   # Verifica tipos TypeScript
+```
+
+## 🔒 Autenticação
+
+O sistema utiliza autenticação baseada em email institucional:
+- **Alunos**: `usuario@eaportal.unasp.br`
+- **Administradores**: `usuario@adm.unasp.br`
+
+## 🎨 Design System
+
+O projeto segue o design definido no Figma, implementando:
+- Paleta de cores institucional
+- Componentes reutilizáveis
+- Layout responsivo
+- Acessibilidade
+
+## 📊 Fases de Desenvolvimento
+
+### ✅ Fase 1: Configuração e Setup
+- [x] Configuração do ambiente Next.js + TypeScript
+- [x] Setup do Tailwind CSS
+- [x] Configuração de ferramentas de qualidade
+
+### 🚧 Fase 2: Frontend Core
+- [ ] Página de Login
+- [ ] Dashboard do Aluno
+- [ ] Dashboard do Administrador
+- [ ] Sistema de enquetes
+
+### 📋 Fase 3: Backend e Integração
+- [ ] API de autenticação
+- [ ] API de enquetes
+- [ ] API de eventos
+- [ ] Integração frontend/backend
+
+### ✨ Fase 4: Qualidade e Deploy
+- [ ] Testes automatizados
+- [ ] CI/CD Pipeline
+- [ ] Deploy em produção
+
+## 🤝 Contribuição
+
+1. Faça fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## 📞 Contato
+
+- **Repositório**: [https://github.com/anasantana216/TCC_NOCAMPUS](https://github.com/anasantana216/TCC_NOCAMPUS)
+- **Figma**: [Design System](https://www.figma.com/design/lD8sRPxRjCZsTPeuCRUDIv/App-para-Enquetes-Unasp)
+
+---
+
+**NoCampus** - Transformando a gestão educacional do UNASP 🎓
