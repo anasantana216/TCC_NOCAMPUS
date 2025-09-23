@@ -32,7 +32,12 @@ export interface Event {
   title: string;
   description: string;
   date: Date;
+  time: string;
   location: string;
   category: string;
-  organizer: string;
+  status: 'upcoming' | 'ongoing' | 'completed';
+  participants: number;
+  maxParticipants?: number;
+  createdBy: string;
+  organizer?: string; // Manter compatibilidade
 }

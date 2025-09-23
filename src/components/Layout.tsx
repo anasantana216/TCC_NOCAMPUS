@@ -12,7 +12,10 @@ export default function Layout({ children }: LayoutProps) {
           <div className="flex justify-between h-16">
             <div className="flex">
               <div className="flex-shrink-0 flex items-center">
-                <span className="text-xl font-bold text-primary">NoCampus</span>
+                <span className="text-xl font-bold">
+                  <span className="text-primary">No</span><span className="text-yellow-500">Campus</span>
+                  <span className="text-sm text-gray-600 ml-2">UNASP</span>
+                </span>
               </div>
             </div>
           </div>
