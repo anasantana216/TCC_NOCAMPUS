@@ -11,8 +11,8 @@ export const register = async (req: Request, res: Response) => {
     const { name, email, password } = req.body;
 
     // Validar email do eaportal ou adm
-    if (!email.endsWith('@eaportal.unasp.br') && !email.endsWith('@adm.unasp.br')) {
-      return res.status(400).json({ message: 'Email inválido. Use seu email do eaportal ou adm.' });
+    if (!email.endsWith('@eaportal.unasp.org') && !email.endsWith('@adm.unasp.br')) {
+      return res.status(400).json({ message: 'Email inválido. Use seu email do eaportal (.org) ou adm (.br).' });
     }
 
     // Verificar se usuário já existe

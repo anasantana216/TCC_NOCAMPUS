@@ -16,8 +16,8 @@ const Login: NextPage = () => {
     
     // Validação do email baseado no tipo de usuário
     if (userType === 'student') {
-      if (!email.endsWith('@eaportal.unasp.br') && !email.endsWith('@adm.unasp.br')) {
-        alert('Por favor, utilize seu email do eaportal ou adm.');
+      if (!email.endsWith('@eaportal.unasp.org')) {
+        alert('Por favor, utilize seu email do eaportal no formato: nomedousuario@eaportal.unasp.org');
         setLoading(false);
         return;
       }
@@ -103,7 +103,7 @@ const Login: NextPage = () => {
                 className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-colors"
                 placeholder={
                   userType === 'student' 
-                    ? 'seu.email@eaportal.unasp.br' 
+                    ? 'nomedousuario@eaportal.unasp.org' 
                     : 'usuario.admin@unasp.org'
                 }
                 value={email}

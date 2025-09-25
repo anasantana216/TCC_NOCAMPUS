@@ -7,7 +7,7 @@ const Profile: NextPage = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [profileData, setProfileData] = useState({
     name: 'Ana Julia',
-    email: 'ana.julia@eaportal.unasp.br',
+    email: 'ana.julia@eaportal.unasp.org',
     course: 'Sistemas de Informação',
     semester: '6º Semestre',
     phone: '(15) 99999-9999',

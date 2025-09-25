@@ -9,7 +9,7 @@ import Avatar from '@/components/Avatar';
 const Dashboard: NextPage = () => {
   const [user] = useState({
     name: 'Ana Julia',
-    email: 'joao.silva@eaportal.unasp.br',
+    email: 'joao.silva@eaportal.unasp.org',
     role: 'student'
   });
 
