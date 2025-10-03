@@ -1,20 +1,35 @@
-# NoCampus UNASP - Plataforma de Eventos e Enquetes
+# NoCampus UNASP - Sistema Multi-Usuário de Eventos e Enquetes
 
-Uma plataforma web moderna para gerenciar eventos e enquetes no Centro Universitário Adventista de Engenheiro Coelho - UNASP.
+Uma plataforma web completa para gerenciar eventos e enquetes no Centro Universitário Adventista de Engenheiro Coelho - UNASP, com dashboards específicos para diferentes tipos de usuários.
 
 ## 🚀 Funcionalidades
 
-### Para Estudantes
-- ✅ Visualizar eventos do campus
-- ✅ Participar de enquetes
-- ✅ Dashboard personalizado
-- ✅ Perfil de usuário
+### 👨‍🎓 Para Estudantes
+- ✅ Dashboard personalizado com calendário de eventos
+- ✅ Visualizar e participar de enquetes ativas
+- ✅ Estatísticas pessoais de participação
+- ✅ Eventos próximos e datas importantes
+- ✅ Ações rápidas para acessar funcionalidades
 
-### Para Administradores
-- ✅ Criar e gerenciar enquetes
-- ✅ Visualizar resultados em tempo real
-- ✅ Dashboard administrativo
-- ✅ Estatísticas da plataforma
+### 👨‍💼 Para Administradores
+- ✅ Dashboard administrativo completo
+- ✅ Criar e gerenciar eventos e enquetes
+- ✅ Estatísticas gerais da plataforma
+- ✅ Monitoramento de atividade recente
+- ✅ Relatórios e configurações do sistema
+
+### 👨‍👩‍👧‍👦 Para Responsáveis
+- ✅ Portal do responsável com informações do estudante
+- ✅ Acompanhamento de eventos relevantes
+- ✅ Visualização de enquetes em andamento
+- ✅ Central de comunicação com a universidade
+- ✅ Avisos importantes e calendário acadêmico
+
+## 🔐 Sistema de Autenticação
+- ✅ Login multi-usuário (Estudante/Admin/Responsável)
+- ✅ Sistema de logout funcional em todas as páginas
+- ✅ Redirecionamento automático baseado no tipo de usuário
+- ✅ Autenticação persistente com localStorage
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -63,7 +78,7 @@ npm run db:push
 ### 1. Iniciar o Backend
 ```bash
 cd server
-npm run dev
+npm start
 ```
 O servidor estará rodando em `http://localhost:3001`
 
@@ -72,20 +87,129 @@ O servidor estará rodando em `http://localhost:3001`
 # Na raiz do projeto
 npm run dev
 ```
-A aplicação estará disponível em `http://localhost:5173`
+A aplicação estará disponível em `http://localhost:5173` (ou próxima porta disponível)
 
 ## 👥 Uso da Aplicação
 
-### Primeiro Acesso
-1. Acesse `http://localhost:5173`
-2. Clique em "Login" no canto superior direito
-3. Clique em "Não tem uma conta? Criar conta"
-4. Use um email válido:
-   - Para estudante: `seu.nome@eaportal.unasp.org`
-   - Para admin: `seu.nome@adm.unasp.br`
+### Acesso ao Sistema
+1. Acesse a aplicação no navegador
+2. Na página inicial, clique em "Entrar"
+3. Selecione o tipo de usuário (Aluno/Administrador/Responsável)
+4. Faça login com qualquer email/senha (sistema de demonstração)
+5. Será redirecionado para o dashboard específico do tipo de usuário
 
-### Como Administrador
-- **Dashboard Admin**: Painel de controle com estatísticas gerais
+### 🎯 Dashboards por Tipo de Usuário
+
+#### 👨‍🎓 Dashboard do Estudante (`/student/dashboard`)
+- Calendário com eventos do mês
+- Enquetes ativas para participação
+- Estatísticas pessoais
+- Eventos próximos
+- Ações rápidas
+
+#### 👨‍💼 Dashboard do Administrador (`/admin/dashboard`)
+- Estatísticas gerais da plataforma
+- Ações administrativas (criar eventos/enquetes)
+- Monitoramento de atividade recente
+- Gerenciamento de conteúdo
+
+#### 👨‍👩‍👧‍👦 Dashboard do Responsável (`/guardian/dashboard`)
+- Informações do estudante
+- Acompanhamento de eventos
+- Central de comunicação
+- Avisos importantes
+
+## 🎨 Design e Tema Visual
+
+### Paleta de Cores UNASP
+- **Azul Marinho** (`blue-900`): Cor principal da identidade
+- **Laranja** (`orange-500`): Cor de destaque e ações
+- **Amarelo** (`yellow-500`): Cor de apoio e alertas
+- **Branco**: Backgrounds e contraste
+
+### Características Visuais
+- ✅ Design moderno com gradientes sutis
+- ✅ Bordas arredondadas e sombras elegantes
+- ✅ Layout responsivo para desktop e mobile
+- ✅ Componentes reutilizáveis e consistentes
+- ✅ Ícones intuitivos (Lucide React)
+- ✅ Tipografia clara e hierarquia visual
+
+## 🔧 Funcionalidades Técnicas
+
+### Autenticação
+- Hook `useAuth` para gerenciamento de estado
+- Componente `LogoutButton` reutilizável
+- Persistência de dados com localStorage
+- Redirecionamento automático baseado no tipo de usuário
+
+### Arquitetura
+- **Frontend**: React 18 + Vite + Tailwind CSS
+- **Backend**: Node.js + Express + Prisma + SQLite
+- **APIs**: RESTful endpoints para eventos e enquetes
+- **Estado**: React Hooks + Context API
+
+## 📁 Estrutura do Projeto
+
+```
+TCC_NOCAMPUS-1/
+├── src/
+│   ├── components/          # Componentes reutilizáveis
+│   │   ├── Layout.jsx       # Layout principal
+│   │   └── LogoutButton.jsx # Botão de logout
+│   ├── pages/              # Páginas da aplicação
+│   │   ├── HomePage.jsx     # Página inicial
+│   │   ├── LoginPage.jsx    # Página de login
+│   │   ├── StudentDashboard.jsx   # Dashboard do estudante
+│   │   ├── AdminDashboard.jsx     # Dashboard do admin
+│   │   ├── GuardianDashboard.jsx  # Dashboard do responsável
+│   │   └── AboutPage.jsx    # Sobre a universidade
+│   ├── hooks/              # Custom hooks
+│   │   └── useAuth.js      # Hook de autenticação
+│   └── services/           # Serviços de API
+│       └── api.js          # Cliente da API
+├── server/                 # Backend Node.js
+│   ├── prisma/            # Configuração do banco
+│   │   └── schema.prisma  # Schema do banco
+│   ├── index.js           # Servidor Express
+│   └── seed.js            # Dados iniciais
+└── public/                # Assets estáticos
+    └── unasp-logo.svg     # Logo da universidade
+```
+
+## 🌐 Deploy e Produção
+
+### Variáveis de Ambiente
+```env
+# Backend
+DATABASE_URL="file:./dev.db"
+PORT=3001
+
+# Frontend
+VITE_API_URL="http://localhost:3001/api"
+```
+
+### Deploy Sugerido
+- **Frontend**: Vercel, Netlify ou GitHub Pages
+- **Backend**: Heroku, Railway ou Digital Ocean
+- **Banco**: PostgreSQL (produção) ou SQLite (desenvolvimento)
+
+## 👨‍💻 Contribuição
+
+1. Fork o projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/nova-funcionalidade`)
+3. Commit suas mudanças (`git commit -m 'feat: adiciona nova funcionalidade'`)
+4. Push para a branch (`git push origin feature/nova-funcionalidade`)
+5. Abra um Pull Request
+
+## 📄 Licença
+
+Este projeto é licenciado sob a MIT License - veja o arquivo [LICENSE](LICENSE) para detalhes.
+
+---
+
+**Centro Universitário Adventista de Engenheiro Coelho - UNASP**  
+Desenvolvido para gerenciar eventos e enquetes da comunidade acadêmica.
 - **Criar Enquetes**: Interface para criação de novas enquetes
 - **Resultados**: Visualizar resultados das enquetes com gráficos
 
