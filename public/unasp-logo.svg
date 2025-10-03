@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <circle cx="200" cy="200" r="200" fill="#1e4d72"/>
+  <!-- Letra A com linhas curvas do UNASP -->
+  <path d="M120 320 L160 120 L200 120 L240 320 L210 320 L202 280 L158 280 L150 320 Z M166 250 L194 250 L180 190 Z" fill="white"/>
+  <!-- Linhas curvas características -->
+  <path d="M100 200 Q200 160 300 200 Q200 180 100 200" fill="none" stroke="white" stroke-width="6" opacity="0.9"/>
+  <path d="M120 240 Q200 200 280 240 Q200 220 120 240" fill="none" stroke="white" stroke-width="5" opacity="0.8"/>
+  <path d="M140 280 Q200 240 260 280 Q200 260 140 280" fill="none" stroke="white" stroke-width="4" opacity="0.7"/>
+</svg>

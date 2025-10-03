@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Calendar, BarChart3, Menu, X } from 'lucide-react';
+import { Home, Calendar, BarChart3, Menu, X, LogIn, Info } from 'lucide-react';
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -8,6 +8,7 @@ const Layout = ({ children }) => {
 
   const navigation = [
     { name: 'Início', href: '/', icon: Home },
+    { name: 'Sobre', href: '/about', icon: Info },
     { name: 'Eventos', href: '/events', icon: Calendar },
     { name: 'Enquetes', href: '/polls', icon: BarChart3 },
   ];
@@ -30,7 +31,7 @@ const Layout = ({ children }) => {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-8">
+            <nav className="hidden md:flex items-center space-x-8">
               {navigation.map((item) => {
                 const Icon = item.icon;
                 const isActive = location.pathname === item.href;
@@ -49,6 +50,15 @@ const Layout = ({ children }) => {
                   </Link>
                 );
               })}
+              
+              {/* Login Button */}
+              <Link
+                to="/login"
+                className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+              >
+                <LogIn className="w-4 h-4 mr-2" />
+                Entrar
+              </Link>
             </nav>
 
             {/* Mobile menu button */}
@@ -85,6 +95,16 @@ const Layout = ({ children }) => {
                     </Link>
                   );
                 })}
+                
+                {/* Mobile Login Button */}
+                <Link
+                  to="/login"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex items-center px-3 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors mt-2"
+                >
+                  <LogIn className="w-4 h-4 mr-2" />
+                  Entrar
+                </Link>
               </div>
             </div>
           )}

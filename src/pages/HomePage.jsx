@@ -55,19 +55,23 @@ const HomePage = () => {
         <p className="text-lg text-blue-600 font-semibold mb-8">
           Centro Universitário Adventista de São Paulo - UNASP
         </p>
-        <div className="space-x-4">
+        <div className="mb-8">
           <Link
-            to="/events"
+            to="/about"
             className="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg hover:bg-blue-700 transition-colors inline-flex items-center"
           >
-            Ver Eventos
+            Saiba Mais
             <ArrowRight className="ml-2 w-5 h-5" />
           </Link>
+        </div>
+        
+        <div className="mt-8">
+          <p className="text-gray-600 mb-4">Faça login para acessar recursos completos:</p>
           <Link
-            to="/polls"
-            className="border-2 border-green-600 text-green-600 px-8 py-3 rounded-lg text-lg hover:bg-green-600 hover:text-white transition-colors inline-flex items-center"
+            to="/login"
+            className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-lg text-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-200 inline-flex items-center shadow-lg"
           >
-            Participar de Enquetes
+            Fazer Login
             <ArrowRight className="ml-2 w-5 h-5" />
           </Link>
         </div>
