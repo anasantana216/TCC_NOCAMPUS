@@ -91,7 +91,7 @@ const PollsPage = () => {
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-800">Enquetes da Comunidade</h1>
-          <p className="text-gray-600 mt-2">Participe e veja a opinião da comunidade UNASP</p>
+          <p className="text-gray-600 mt-2">Participe e veja a opinião da comunidade UNASP EC</p>
         </div>
         <button
           className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors flex items-center"

@@ -9,29 +9,27 @@ const Layout = ({ children }) => {
   const navigation = [
     { name: 'Início', href: '/', icon: Home },
     { name: 'Sobre', href: '/about', icon: Info },
-    { name: 'Eventos', href: '/events', icon: Calendar },
-    { name: 'Enquetes', href: '/polls', icon: BarChart3 },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50">
       {/* Header */}
-      <header className="bg-white shadow-lg">
+      <header className="bg-white shadow-xl border-b-4 border-blue-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             {/* Logo */}
             <Link to="/" className="flex items-center">
               <div className="text-3xl font-bold">
-                <span className="text-blue-600">No</span>
+                <span className="text-blue-900">No</span>
                 <span className="text-yellow-500">Campus</span>
               </div>
-              <div className="ml-3 text-sm text-gray-600 hidden sm:block">
-                Centro Universitário Adventista de São Paulo
+              <div className="ml-3 text-sm text-blue-700 font-medium hidden sm:block">
+                Centro Universitário Adventista de Engenheiro Coelho
               </div>
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
+            <nav className="hidden md:flex items-center space-x-6">
               {navigation.map((item) => {
                 const Icon = item.icon;
                 const isActive = location.pathname === item.href;
@@ -39,10 +37,10 @@ const Layout = ({ children }) => {
                   <Link
                     key={item.name}
                     to={item.href}
-                    className={`flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    className={`flex items-center px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
                       isActive
-                        ? 'bg-blue-100 text-blue-700'
-                        : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50'
+                        ? 'bg-blue-900 text-white shadow-md'
+                        : 'text-blue-900 hover:text-orange-600 hover:bg-orange-50'
                     }`}
                   >
                     <Icon className="w-4 h-4 mr-2" />
@@ -54,7 +52,7 @@ const Layout = ({ children }) => {
               {/* Login Button */}
               <Link
                 to="/login"
-                className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+                className="flex items-center px-6 py-2 bg-gradient-to-r from-orange-500 to-yellow-500 text-white rounded-xl text-sm font-bold hover:from-orange-600 hover:to-yellow-600 transition-all shadow-md hover:shadow-lg"
               >
                 <LogIn className="w-4 h-4 mr-2" />
                 Entrar
@@ -65,7 +63,7 @@ const Layout = ({ children }) => {
             <div className="md:hidden">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-2 rounded-md text-gray-600 hover:text-blue-600 hover:bg-blue-50"
+                className="p-2 rounded-xl text-blue-900 hover:text-orange-600 hover:bg-orange-50 transition-all"
               >
                 {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
@@ -84,10 +82,10 @@ const Layout = ({ children }) => {
                       key={item.name}
                       to={item.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className={`flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                      className={`flex items-center px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
                         isActive
-                          ? 'bg-blue-100 text-blue-700'
-                          : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50'
+                          ? 'bg-blue-900 text-white shadow-md'
+                          : 'text-blue-900 hover:text-orange-600 hover:bg-orange-50'
                       }`}
                     >
                       <Icon className="w-4 h-4 mr-2" />
@@ -100,7 +98,7 @@ const Layout = ({ children }) => {
                 <Link
                   to="/login"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex items-center px-3 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors mt-2"
+                  className="flex items-center px-4 py-3 bg-gradient-to-r from-orange-500 to-yellow-500 text-white rounded-xl text-sm font-bold hover:from-orange-600 hover:to-yellow-600 transition-all mt-3 shadow-md"
                 >
                   <LogIn className="w-4 h-4 mr-2" />
                   Entrar
@@ -117,20 +115,20 @@ const Layout = ({ children }) => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-r from-blue-800 to-indigo-800 text-white py-8 mt-16">
+      <footer className="bg-gradient-to-r from-blue-900 to-blue-800 text-white py-12 mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="text-2xl font-bold mb-4">
+          <div className="text-3xl font-bold mb-6">
             <span className="text-white">No</span>
             <span className="text-yellow-400">Campus</span>
           </div>
-          <p className="text-blue-200 mb-2">
-            Conectando estudantes através de eventos e experiências
+          <p className="text-blue-200 mb-4 text-lg">
+            🎓 Conectando estudantes através de eventos e experiências
           </p>
-          <p className="text-yellow-300 font-medium mb-4">
-            Centro Universitário Adventista de São Paulo - UNASP
+          <p className="text-orange-300 font-bold mb-6 text-lg bg-blue-800 py-2 px-4 rounded-full inline-block">
+            Centro Universitário Adventista de Engenheiro Coelho - UNASP
           </p>
           <p className="text-blue-300 text-sm">
-            © 2025 NoCampus UNASP. Todos os direitos reservados.
+            © 2025 NoCampus UNASP EC. Todos os direitos reservados.
           </p>
         </div>
       </footer>

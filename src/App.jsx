@@ -6,6 +6,9 @@ import EventsPage from './pages/EventsPage';
 import PollsPage from './pages/PollsPage';
 import LoginPage from './pages/LoginPage';
 import AboutPage from './pages/AboutPage';
+import StudentDashboard from './pages/StudentDashboard';
+import AdminDashboard from './pages/AdminDashboard';
+import GuardianDashboard from './pages/GuardianDashboard';
 import './App.css'
 
 function App() {
@@ -13,6 +16,9 @@ function App() {
     <Router>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/student/dashboard" element={<StudentDashboard />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/guardian/dashboard" element={<GuardianDashboard />} />
         <Route path="/*" element={
           <Layout>
             <Routes>

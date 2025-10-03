@@ -6,28 +6,28 @@ const AboutPage = () => {
   return (
     <div className="max-w-4xl mx-auto">
       {/* Header */}
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">
-          Sobre o <span className="text-blue-600">No</span><span className="text-yellow-500">Campus</span>
+      <div className="text-center mb-12 bg-white rounded-2xl shadow-lg p-10 border-t-4 border-blue-900">
+        <h1 className="text-5xl font-bold text-blue-900 mb-6">
+          📖 Sobre o <span className="text-blue-900">No</span><span className="text-yellow-500">Campus</span>
         </h1>
-        <p className="text-xl text-gray-600">
-          Conectando a comunidade acadêmica do UNASP EC
+        <p className="text-xl text-orange-600 font-semibold bg-orange-50 py-2 px-4 rounded-full inline-block">
+          🎓 Conectando a comunidade acadêmica do UNASP EC
         </p>
       </div>
 
       {/* Sobre o NoCampus */}
-      <section className="bg-white rounded-lg shadow-lg p-8 mb-8">
-        <div className="flex items-center mb-6">
-          <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mr-4">
-            <Target className="w-6 h-6 text-blue-600" />
+      <section className="bg-white rounded-2xl shadow-xl p-10 mb-8 border-t-4 border-orange-500">
+        <div className="flex items-center mb-8">
+          <div className="bg-gradient-to-br from-orange-100 to-orange-200 w-16 h-16 rounded-full flex items-center justify-center mr-6 shadow-md">
+            <Target className="w-8 h-8 text-orange-600" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-800">Por que o NoCampus foi criado?</h2>
+          <h2 className="text-3xl font-bold text-blue-900">🎯 Por que o NoCampus foi criado?</h2>
         </div>
         
         <div className="space-y-4 text-gray-700">
           <p className="text-lg">
             O <strong>NoCampus</strong> nasceu da necessidade de conectar melhor a comunidade acadêmica do 
-            Centro Universitário Adventista de São Paulo - Campus Engenheiro Coelho (UNASP EC).
+            Centro Universitário Adventista de Engenheiro Coelho - UNASP.
           </p>
           
           <p>
@@ -77,12 +77,12 @@ const AboutPage = () => {
           <div className="bg-yellow-100 w-12 h-12 rounded-full flex items-center justify-center mr-4">
             <Award className="w-6 h-6 text-yellow-600" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-800">UNASP - Engenheiro Coelho</h2>
+          <h2 className="text-2xl font-bold text-gray-800">Centro Universitário Adventista de Engenheiro Coelho</h2>
         </div>
         
         <div className="space-y-4 text-gray-700">
           <p className="text-lg">
-            O <strong>Centro Universitário Adventista de São Paulo - Campus Engenheiro Coelho</strong> 
+            O <strong>Centro Universitário Adventista de Engenheiro Coelho - UNASP</strong> 
             é uma instituição de ensino superior confessional adventista, comprometida com a excelência 
             acadêmica e a formação integral dos estudantes.
           </p>

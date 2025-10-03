@@ -1,6 +1,6 @@
 # NoCampus UNASP - Plataforma de Eventos e Enquetes
 
-Uma plataforma web moderna para gerenciar eventos e enquetes no Centro Universitário Adventista de São Paulo (UNASP).
+Uma plataforma web moderna para gerenciar eventos e enquetes no Centro Universitário Adventista de Engenheiro Coelho - UNASP.
 
 ## 🚀 Funcionalidades
 

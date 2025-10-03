@@ -37,7 +37,7 @@ async function seedData() {
     const poll = await prisma.poll.create({
       data: {
         title: 'Qual seu evento favorito no campus?',
-        description: 'Queremos sua opinião sobre os tipos de eventos do UNASP',
+        description: 'Queremos sua opinião sobre os tipos de eventos do UNASP EC',
         isActive: true,
         options: {
           create: [

@@ -54,10 +54,23 @@ const LoginPage = () => {
       // Simulação de autenticação - aqui você integraria com sua API
       await new Promise(resolve => setTimeout(resolve, 1000));
       
+      // Simular dados do usuário
+      const userData = {
+        email: formData.email,
+        userType: userType,
+        name: userType === 'student' ? 'João Silva' : 
+              userType === 'admin' ? 'Admin Sistema' : 'Maria Santos (Responsável)',
+        loginTime: new Date().toISOString()
+      };
+      
+      // Salvar no localStorage para simular autenticação
+      localStorage.setItem('user', JSON.stringify(userData));
+      localStorage.setItem('isAuthenticated', 'true');
+      
       // Redirecionar baseado no tipo de usuário
       switch(userType) {
         case 'student':
-          navigate('/events');
+          navigate('/student/dashboard');
           break;
         case 'admin':
           navigate('/admin/dashboard');
@@ -78,29 +91,31 @@ const LoginPage = () => {
   const selectedType = userTypes.find(type => type.id === userType);
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       {/* Header */}
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <Link to="/" className="flex justify-center items-center mb-6">
-          <h1 className="text-4xl font-bold text-gray-800">
-            <span className="text-blue-600">No</span><span className="text-yellow-500">Campus</span>
-          </h1>
-        </Link>
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Entre na sua conta
-        </h2>
-        <p className="mt-2 text-center text-sm text-gray-600">
-          Centro Universitário Adventista de São Paulo - UNASP
-        </p>
+        <div className="bg-white rounded-2xl shadow-xl p-8 border-t-4 border-blue-900">
+          <Link to="/" className="flex justify-center items-center mb-6">
+            <h1 className="text-5xl font-bold">
+              <span className="text-blue-900">No</span><span className="text-yellow-500">Campus</span>
+            </h1>
+          </Link>
+          <h2 className="mt-6 text-center text-3xl font-bold text-blue-900">
+            🔑 Entre na sua conta
+          </h2>
+          <p className="mt-4 text-center text-sm text-orange-600 font-semibold bg-orange-50 py-2 px-4 rounded-full">
+            Centro Universitário Adventista de Engenheiro Coelho - UNASP
+          </p>
+        </div>
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow-lg sm:rounded-lg sm:px-10">
+        <div className="bg-white py-8 px-6 shadow-xl rounded-2xl border-2 border-blue-100">
           
           {/* User Type Selection */}
-          <div className="mb-6">
-            <label className="block text-sm font-medium text-gray-700 mb-3">
-              Selecione o tipo de usuário
+          <div className="mb-8">
+            <label className="block text-sm font-bold text-blue-900 mb-4">
+              👤 Selecione o tipo de usuário
             </label>
             <div className="grid grid-cols-1 gap-2">
               {userTypes.map((type) => {
@@ -111,12 +126,12 @@ const LoginPage = () => {
                     key={type.id}
                     type="button"
                     onClick={() => setUserType(type.id)}
-                    className={`p-3 rounded-lg border-2 transition-all duration-200 text-left ${
+                    className={`p-4 rounded-xl border-2 transition-all duration-200 text-left shadow-sm hover:shadow-md ${
                       isSelected
-                        ? type.color === 'blue' ? 'border-blue-600 bg-blue-50' :
-                          type.color === 'purple' ? 'border-purple-600 bg-purple-50' :
-                          'border-green-600 bg-green-50'
-                        : 'border-gray-200 hover:border-gray-300 bg-white'
+                        ? type.color === 'blue' ? 'border-blue-900 bg-gradient-to-r from-blue-50 to-blue-100' :
+                          type.color === 'purple' ? 'border-orange-500 bg-gradient-to-r from-orange-50 to-orange-100' :
+                          'border-yellow-500 bg-gradient-to-r from-yellow-50 to-yellow-100'
+                        : 'border-blue-200 hover:border-blue-300 bg-white hover:bg-blue-50'
                     }`}
                   >
                     <div className="flex items-center">
@@ -177,7 +192,7 @@ const LoginPage = () => {
                   required
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  className="appearance-none block w-full pl-10 pr-3 py-3 border-2 border-blue-200 rounded-xl placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 sm:text-sm transition-all"
                   placeholder={
                     userType === 'student' ? 'seunome@eaportal.unasp.org' :
                     userType === 'admin' ? 'seunome@eaportaladmin.unasp.org' :
@@ -229,7 +244,7 @@ const LoginPage = () => {
                   required
                   value={formData.password}
                   onChange={handleInputChange}
-                  className="appearance-none block w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  className="appearance-none block w-full pl-10 pr-10 py-3 border-2 border-blue-200 rounded-xl placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 sm:text-sm transition-all"
                   placeholder="Digite sua senha"
                 />
                 <button
@@ -261,7 +276,7 @@ const LoginPage = () => {
               </div>
 
               <div className="text-sm">
-                <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
+                <a href="#" className="font-semibold text-orange-600 hover:text-orange-500 transition-colors">
                   Esqueceu a senha?
                 </a>
               </div>
@@ -279,11 +294,7 @@ const LoginPage = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className={`group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-lg text-white transition-colors ${
-                  selectedType.color === 'blue' ? 'bg-blue-600 hover:bg-blue-700 focus:ring-blue-500' :
-                  selectedType.color === 'purple' ? 'bg-purple-600 hover:bg-purple-700 focus:ring-purple-500' :
-                  'bg-green-600 hover:bg-green-700 focus:ring-green-500'
-                } focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed`}
+                className="group relative w-full flex justify-center py-4 px-6 border border-transparent text-sm font-bold rounded-xl text-white transition-all bg-gradient-to-r from-blue-900 to-blue-700 hover:from-blue-800 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
               >
                 {loading ? (
                   <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
