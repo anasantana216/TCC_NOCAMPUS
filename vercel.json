@@ -2,17 +2,10 @@
   "version": 2,
   "buildCommand": "npm run build",
   "installCommand": "npm install",
-  "framework": "nextjs",
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
-    }
-  ],
+  "framework": "vite",
+  "outputDirectory": "dist",
   "env": {
-    "NEXT_PUBLIC_API_URL": "https://nocampus-api.onrender.com/api",
-    "DATABASE_URL": "@database_url",
-    "JWT_SECRET": "@jwt_secret"
+    "VITE_API_URL": "https://nocampus-api.onrender.com/api"
   },
   "regions": ["gru1"]
 }
