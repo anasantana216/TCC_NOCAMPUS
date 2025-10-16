@@ -1,6 +1,6 @@
 import React from 'react';
 import { LogOut } from 'lucide-react';
-import { useAuth } from '../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const LogoutButton = ({ 
   variant = 'default', 
@@ -9,7 +9,12 @@ const LogoutButton = ({
   className = '',
   children 
 }) => {
-  const { logout } = useAuth();
+  const navigate = useNavigate();
+  
+  const logout = () => {
+    localStorage.removeItem('auth_token');
+    navigate('/login');
+  };
 
   const getVariantClasses = () => {
     switch (variant) {

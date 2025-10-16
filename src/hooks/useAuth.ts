@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { User } from '@/types';
+import { useNavigate } from 'react-router-dom';
+import { User } from '../types';
 
 export const useAuth = () => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Verificar se há um token no localStorage
@@ -81,13 +82,13 @@ export const useAuth = () => {
 // Hook para proteção de rotas administrativas
 export const useRequireAuth = (redirectUrl = '/login') => {
   const auth = useAuth();
-  const router = useRouter();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!auth.loading && !auth.isAuthenticated) {
-      router.push(redirectUrl);
+      navigate(redirectUrl);
     }
-  }, [auth.loading, auth.isAuthenticated]);
+  }, [auth.loading, auth.isAuthenticated, navigate, redirectUrl]);
 
   return auth;
 };

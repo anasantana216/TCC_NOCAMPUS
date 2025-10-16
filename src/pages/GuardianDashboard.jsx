@@ -1,88 +1,116 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, Clock, CheckCircle, AlertCircle, User, BookOpen, MessageCircle, Bell } from 'lucide-react';
-import { eventsAPI, pollsAPI } from '../services/api';
+import { Calendar, Clock, CheckCircle, AlertCircle, User, BookOpen, MessageCircle, Bell, TrendingUp, Award, FileText, Eye, X } from 'lucide-react';
 import LogoutButton from '../components/LogoutButton';
 
 const GuardianDashboard = () => {
-  const [events, setEvents] = useState([]);
-  const [polls, setPolls] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [studentInfo, setStudentInfo] = useState({
-    name: "João Silva Santos",
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [showContactForm, setShowContactForm] = useState(false);
+  
+  const [studentInfo] = useState({
+    name: "Ana Beatriz Silva",
     course: "Engenharia da Computação",
-    semester: "6º Semestre",
-    status: "Ativo"
+    semester: "6º Semestre", 
+    gpa: "8.7",
+    attendance: "92",
+    credits: 180,
+    totalCredits: 240
   });
 
-  useEffect(() => {
-    fetchDashboardData();
-  }, []);
-
-  const fetchDashboardData = async () => {
-    try {
-      setLoading(true);
-      const [eventsResponse, pollsResponse] = await Promise.all([
-        eventsAPI.getAll(),
-        pollsAPI.getAll()
-      ]);
-      
-      setEvents(eventsResponse.data);
-      setPolls(pollsResponse.data);
-    } catch (err) {
-      console.error('Erro ao carregar dados:', err);
-    } finally {
-      setLoading(false);
+  const [notifications, setNotifications] = useState([
+    {
+      id: 1,
+      type: "grade",
+      title: "Nova nota lançada",
+      message: "Nota da disciplina Algoritmos e Estruturas de Dados foi lançada",
+      date: "2024-10-15",
+      read: false,
+    },
+    {
+      id: 2,
+      type: "event",
+      title: "Evento próximo",
+      message: "Seminário de Engenharia acontece amanhã às 14h",
+      date: "2024-10-14",
+      read: false,
+    },
+    {
+      id: 3,
+      type: "financial",
+      title: "Mensalidade",
+      message: "Lembrete: mensalidade vence em 5 dias",
+      date: "2024-10-13",
+      read: true,
     }
-  };
+  ]);
 
-  const getUpcomingEvents = () => {
-    const today = new Date();
-    return events
-      .filter(event => new Date(event.date) >= today)
-      .sort((a, b) => new Date(a.date) - new Date(b.date))
-      .slice(0, 5);
-  };
+  const [contactForm, setContactForm] = useState({
+    subject: '',
+    message: '',
+    priority: 'normal'
+  });
 
-  const getActivePolls = () => {
-    return polls.filter(poll => poll.isActive).slice(0, 3);
-  };
-
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center py-16">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-4 border-transparent border-t-blue-900 border-r-green-500 mx-auto mb-4"></div>
-          <p className="text-blue-700 font-semibold text-lg">Carregando informações do estudante...</p>
-        </div>
-      </div>
-    );
-  }
+  const recentGrades = [
+    {
+      subject: "Algoritmos e Estruturas de Dados",
+      assignment: "Prova P2",
+      score: 8.5,
+      date: "15/10/2024"
+    },
+    {
+      subject: "Cálculo Diferencial e Integral II",
+      assignment: "Lista de Exercícios 3",
+      score: 9.0,
+      date: "12/10/2024"
+    },
+    {
+      subject: "Física II",
+      assignment: "Relatório de Laboratório",
+      score: 7.8,
+      date: "10/10/2024"
+    }
+  ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-green-50/20 via-white to-orange-50 relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-green-300/15 to-blue-300/15 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-10 right-20 w-48 h-48 bg-gradient-to-br from-orange-300/15 to-yellow-300/15 rounded-full blur-2xl animate-pulse delay-1000"></div>
-      <div className="absolute top-1/2 right-10 w-32 h-32 bg-gradient-to-br from-teal-200/15 to-cyan-200/15 rounded-full blur-xl animate-pulse delay-2000"></div>
-      
-      {/* Top Navigation */}
-      <div className="bg-gradient-to-r from-white via-green-50/30 to-white shadow-2xl border-b-4 border-gradient-to-r from-blue-900 to-green-900 relative z-10 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <a href="/" className="text-2xl font-bold group">
-                <span className="bg-gradient-to-r from-blue-900 to-indigo-800 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300 inline-block">No</span>
-                <span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300 inline-block">Campus</span>
-              </a>
-              <span className="text-gray-300">|</span>
-              <span className="bg-gradient-to-r from-blue-900 to-green-800 bg-clip-text text-transparent font-semibold">Portal do Responsável</span>
-            </div>
-            <div className="flex items-center space-x-4">
-              <div className="text-right bg-gradient-to-r from-blue-50 to-green-50 px-4 py-2 rounded-xl border border-blue-200/50 shadow-md">
-                <p className="text-sm text-blue-700">Responsável por:</p>
-                <p className="font-bold bg-gradient-to-r from-blue-900 to-green-800 bg-clip-text text-transparent">{studentInfo.name}</p>
+    <div className="min-h-screen bg-gradient-to-br from-green-400 via-emerald-500 to-teal-600 relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
+        <div className="absolute top-40 right-20 w-24 h-24 bg-emerald-300/20 rounded-full blur-lg"></div>
+        <div className="absolute bottom-20 left-1/4 w-40 h-40 bg-teal-300/15 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-10 right-10 w-28 h-28 bg-green-300/25 rounded-full blur-xl"></div>
+      </div>
+
+      {/* Header */}
+      <div className="relative z-10">
+        <div className="bg-white/10 backdrop-blur-md border-b border-white/20">
+          <div className="max-w-7xl mx-auto px-6 py-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-green-600 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg">
+                    <User className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h1 className="text-xl font-bold text-white">Portal do Responsável</h1>
+                    <p className="text-green-100 text-sm">UNASP Engenheiro Coelho</p>
+                  </div>
+                </div>
               </div>
-              <LogoutButton variant="default" size="medium" showIcon={false} />
+
+              <div className="flex items-center space-x-4">
+                <div className="text-right bg-gradient-to-r from-green-50 to-emerald-50 px-4 py-2 rounded-xl border border-green-200/50 shadow-md">
+                  <p className="text-sm text-green-700">Responsável por:</p>
+                  <p className="font-bold bg-gradient-to-r from-green-800 to-emerald-800 bg-clip-text text-transparent">{studentInfo.name}</p>
+                </div>
+                <button
+                  onClick={() => setShowContactForm(true)}
+                  className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-4 py-2 rounded-lg font-medium hover:from-green-700 hover:to-emerald-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center"
+                >
+                  <MessageCircle className="w-4 h-4 mr-2" />
+                  Contato
+                </button>
+                <LogoutButton variant="default" size="medium" showIcon={false} />
+              </div>
             </div>
           </div>
         </div>
@@ -92,225 +120,187 @@ const GuardianDashboard = () => {
         
         {/* Header */}
         <div className="mb-8 text-center">
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-900 via-green-800 to-teal-900 bg-clip-text text-transparent mb-4">
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-green-800 via-emerald-700 to-teal-800 bg-clip-text text-transparent mb-4">
             Portal do Responsável 👨‍👩‍👧‍👦
           </h1>
-          <p className="text-blue-700 text-xl font-medium">
+          <p className="text-emerald-700 text-xl font-medium">
             Acompanhe a vida acadêmica e atividades do estudante na UNASP Engenheiro Coelho
           </p>
         </div>
 
         {/* Student Info Card */}
-        <div className="bg-gradient-to-br from-white to-blue-50/50 rounded-3xl shadow-2xl p-8 mb-8 border border-blue-200/30 backdrop-blur-sm relative">
-          <div className="absolute -top-2 -left-2 w-4 h-4 bg-gradient-to-br from-blue-500 to-green-500 rounded-full"></div>
-          <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-full"></div>
-          <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-gradient-to-br from-green-500 to-teal-500 rounded-full"></div>
-          <div className="absolute -bottom-2 -right-2 w-4 h-4 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full"></div>
+        <div className="bg-gradient-to-br from-white to-green-50/50 rounded-3xl shadow-2xl p-8 mb-8 border border-green-200/30 backdrop-blur-sm relative">
+          <div className="absolute -top-2 -left-2 w-4 h-4 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full"></div>
+          <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-full"></div>
+          <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-gradient-to-br from-teal-500 to-green-500 rounded-full"></div>
+          <div className="absolute -bottom-2 -right-2 w-4 h-4 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full"></div>
           
-          <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-900 to-green-800 bg-clip-text text-transparent mb-6 flex items-center">
+          <h2 className="text-2xl font-bold bg-gradient-to-r from-green-800 to-emerald-800 bg-clip-text text-transparent mb-6 flex items-center">
             👨‍🎓 Informações do Estudante
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="text-center p-6 bg-gradient-to-br from-blue-100 via-blue-200 to-indigo-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group border-2 border-white/30">
-              <User className="w-10 h-10 text-blue-900 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
-              <p className="text-sm text-blue-700 mb-2 font-medium">Nome Completo</p>
-              <p className="font-bold bg-gradient-to-r from-blue-900 to-indigo-800 bg-clip-text text-transparent">{studentInfo.name}</p>
+            <div className="text-center p-6 bg-gradient-to-br from-green-100 via-green-200 to-emerald-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group border-2 border-white/30">
+              <User className="w-10 h-10 text-green-800 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
+              <p className="text-sm text-green-700 mb-2 font-medium">Nome Completo</p>
+              <p className="font-bold bg-gradient-to-r from-green-800 to-emerald-800 bg-clip-text text-transparent text-sm">{studentInfo.name}</p>
             </div>
-            <div className="text-center p-6 bg-gradient-to-br from-orange-100 via-orange-200 to-yellow-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group border-2 border-white/30">
-              <BookOpen className="w-10 h-10 text-orange-700 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
-              <p className="text-sm text-orange-700 mb-2 font-medium">Curso</p>
-              <p className="font-bold bg-gradient-to-r from-orange-700 to-yellow-700 bg-clip-text text-transparent">{studentInfo.course}</p>
+            <div className="text-center p-6 bg-gradient-to-br from-emerald-100 via-emerald-200 to-teal-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group border-2 border-white/30">
+              <BookOpen className="w-10 h-10 text-emerald-700 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
+              <p className="text-sm text-emerald-700 mb-2 font-medium">Curso</p>
+              <p className="font-bold bg-gradient-to-r from-emerald-700 to-teal-700 bg-clip-text text-transparent text-sm">{studentInfo.course}</p>
             </div>
-            <div className="text-center p-6 bg-gradient-to-br from-yellow-100 via-yellow-200 to-orange-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group border-2 border-white/30">
-              <Calendar className="w-10 h-10 text-yellow-700 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
-              <p className="text-sm text-yellow-700 mb-2 font-medium">Período</p>
-              <p className="font-bold bg-gradient-to-r from-yellow-700 to-orange-700 bg-clip-text text-transparent">{studentInfo.semester}</p>
+            <div className="text-center p-6 bg-gradient-to-br from-teal-100 via-teal-200 to-green-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group border-2 border-white/30">
+              <Calendar className="w-10 h-10 text-teal-700 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
+              <p className="text-sm text-teal-700 mb-2 font-medium">Período</p>
+              <p className="font-bold bg-gradient-to-r from-teal-700 to-green-700 bg-clip-text text-transparent">{studentInfo.semester}</p>
             </div>
-            <div className="text-center p-6 bg-gradient-to-br from-green-100 via-green-200 to-teal-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group border-2 border-white/30">
-              <CheckCircle className="w-10 h-10 text-green-700 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
-              <p className="text-sm text-green-700 mb-2 font-medium">Status</p>
-              <p className="font-bold bg-gradient-to-r from-green-700 to-teal-700 bg-clip-text text-transparent">{studentInfo.status}</p>
+            <div className="text-center p-6 bg-gradient-to-br from-green-100 via-green-200 to-emerald-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group border-2 border-white/30">
+              <TrendingUp className="w-10 h-10 text-green-700 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
+              <p className="text-sm text-green-700 mb-2 font-medium">CRA</p>
+              <p className="font-bold bg-gradient-to-r from-green-700 to-emerald-700 bg-clip-text text-transparent">{studentInfo.gpa}</p>
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          
-          {/* Upcoming Events */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 border-t-4 border-orange-500">
-            <h2 className="text-xl font-bold text-blue-900 mb-6 flex items-center">
-              📅 Próximos Eventos
-            </h2>
-            <div className="space-y-4">
-              {getUpcomingEvents().map((event) => (
-                <div key={event.id} className="border-2 border-orange-100 rounded-xl p-4 hover:border-blue-300 transition-all">
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1">
-                      <h3 className="font-bold text-blue-900 text-sm mb-1">{event.title}</h3>
-                      <p className="text-blue-700 text-xs mb-2">{event.description}</p>
-                      <div className="flex items-center space-x-3">
-                        <span className="text-xs text-orange-600 bg-orange-100 px-2 py-1 rounded-full flex items-center">
-                          <Calendar className="w-3 h-3 mr-1" />
-                          {new Date(event.date).toLocaleDateString('pt-BR')}
-                        </span>
-                        <span className="text-xs text-blue-600 bg-blue-100 px-2 py-1 rounded-full flex items-center">
-                          <Clock className="w-3 h-3 mr-1" />
-                          {event.time}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="text-center">
-                      <span className="text-xs text-green-600 bg-green-100 px-2 py-1 rounded-full">
-                        {event.category}
+        {/* Academic Progress */}
+        <div className="bg-white/90 backdrop-blur-lg rounded-3xl shadow-2xl p-8 mb-8 border border-green-200/30">
+          <h2 className="text-2xl font-bold bg-gradient-to-r from-green-800 to-emerald-800 bg-clip-text text-transparent mb-6 flex items-center">
+            📊 Progresso Acadêmico
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-2xl border border-green-200">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-semibold text-green-800">Créditos Cursados</h3>
+                <Award className="w-8 h-8 text-green-600" />
+              </div>
+              <div className="relative">
+                <div className="w-full bg-green-200 rounded-full h-3 mb-2">
+                  <div 
+                    className="bg-gradient-to-r from-green-500 to-emerald-500 h-3 rounded-full transition-all duration-1000" 
+                    style={{width: `${(studentInfo.credits / studentInfo.totalCredits) * 100}%`}}
+                  ></div>
+                </div>
+                <p className="text-sm text-green-700">{studentInfo.credits} de {studentInfo.totalCredits} créditos</p>
+                <p className="text-2xl font-bold text-green-800 mt-2">{Math.round((studentInfo.credits / studentInfo.totalCredits) * 100)}%</p>
+              </div>
+            </div>
+            
+            <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-6 rounded-2xl border border-emerald-200">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-semibold text-emerald-800">Desempenho</h3>
+                <TrendingUp className="w-8 h-8 text-emerald-600" />
+              </div>
+              <p className="text-3xl font-bold text-emerald-800 mb-2">{studentInfo.gpa}</p>
+              <p className="text-sm text-emerald-700">Coeficiente de Rendimento Acadêmico</p>
+              <div className="mt-2">
+                <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">
+                  Excelente
+                </span>
+              </div>
+            </div>
+            
+            <div className="bg-gradient-to-br from-teal-50 to-green-50 p-6 rounded-2xl border border-teal-200">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-semibold text-teal-800">Presença</h3>
+                <CheckCircle className="w-8 h-8 text-teal-600" />
+              </div>
+              <p className="text-3xl font-bold text-teal-800 mb-2">{studentInfo.attendance}%</p>
+              <p className="text-sm text-teal-700">Frequência nas aulas</p>
+              <div className="mt-2">
+                <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">
+                  Dentro do esperado
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Recent Grades and Quick Actions */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2">
+            <div className="bg-gradient-to-br from-white to-green-50/50 rounded-3xl shadow-2xl p-8 border border-green-200/30 backdrop-blur-sm">
+              <h2 className="text-2xl font-bold bg-gradient-to-r from-green-800 to-emerald-800 bg-clip-text text-transparent mb-6 flex items-center">
+                📝 Notas Recentes
+              </h2>
+              <div className="space-y-4">
+                {recentGrades.map((grade, index) => (
+                  <div key={index} className="bg-gradient-to-r from-white to-green-50 p-6 rounded-2xl border-l-4 border-green-500 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] group">
+                    <div className="flex items-center justify-between mb-3">
+                      <h3 className="text-lg font-semibold text-green-900 group-hover:text-green-700 transition-colors duration-300">{grade.subject}</h3>
+                      <span className={`px-4 py-2 rounded-full text-sm font-bold ${
+                        grade.score >= 8 ? 'bg-green-100 text-green-800' : 
+                        grade.score >= 7 ? 'bg-emerald-100 text-emerald-800' : 
+                        'bg-teal-100 text-teal-800'
+                      }`}>
+                        {grade.score}/10
                       </span>
                     </div>
+                    <p className="text-green-800 font-medium mb-1">{grade.assignment}</p>
+                    <p className="text-green-600 text-sm">{grade.date}</p>
                   </div>
-                </div>
-              ))}
-              {getUpcomingEvents().length === 0 && (
-                <div className="text-center py-8">
-                  <Calendar className="w-12 h-12 text-gray-300 mx-auto mb-3" />
-                  <p className="text-gray-500">Nenhum evento próximo encontrado</p>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Active Polls */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 border-t-4 border-yellow-500">
-            <h2 className="text-xl font-bold text-blue-900 mb-6 flex items-center">
-              📊 Enquetes em Andamento
-            </h2>
-            <div className="space-y-4">
-              {getActivePolls().map((poll) => (
-                <div key={poll.id} className="border-2 border-yellow-100 rounded-xl p-4 hover:border-orange-300 transition-all">
-                  <h3 className="font-bold text-blue-900 text-sm mb-3">{poll.title}</h3>
-                  <p className="text-blue-700 text-xs mb-4">{poll.description}</p>
-                  
-                  <div className="space-y-2">
-                    {poll.options?.map((option, index) => {
-                      const totalVotes = poll.options.reduce((sum, opt) => sum + opt.votes, 0);
-                      const percentage = totalVotes > 0 ? (option.votes / totalVotes) * 100 : 0;
-                      
-                      return (
-                        <div key={index} className="bg-gray-50 rounded-lg p-2">
-                          <div className="flex justify-between items-center mb-1">
-                            <span className="text-xs font-medium text-blue-900">{option.text}</span>
-                            <span className="text-xs text-blue-700">{option.votes} votos</span>
-                          </div>
-                          <div className="w-full bg-gray-200 rounded-full h-2">
-                            <div 
-                              className="bg-gradient-to-r from-orange-400 to-yellow-400 h-2 rounded-full"
-                              style={{ width: `${percentage}%` }}
-                            ></div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                  
-                  <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
-                    <span className="text-xs text-green-600 bg-green-100 px-2 py-1 rounded-full">
-                      Enquete Ativa
-                    </span>
-                    <span className="text-xs text-blue-600">
-                      {poll.options?.reduce((sum, opt) => sum + opt.votes, 0) || 0} participações
-                    </span>
-                  </div>
-                </div>
-              ))}
-              {getActivePolls().length === 0 && (
-                <div className="text-center py-8">
-                  <MessageCircle className="w-12 h-12 text-gray-300 mx-auto mb-3" />
-                  <p className="text-gray-500">Nenhuma enquete ativa no momento</p>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* Communication and Important Notes */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
-          
-          {/* Communication Center */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 border-t-4 border-green-500">
-            <h2 className="text-xl font-bold text-blue-900 mb-6 flex items-center">
-              💬 Central de Comunicação
-            </h2>
-            <div className="space-y-4">
-              <div className="p-4 bg-gradient-to-r from-blue-50 to-orange-50 rounded-xl border-l-4 border-blue-500">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-bold text-blue-900">Mensagem da Coordenação</span>
-                  <span className="text-xs text-blue-700">Há 2 dias</span>
-                </div>
-                <p className="text-sm text-blue-800">
-                  Informamos sobre as mudanças no calendário acadêmico para o próximo semestre.
-                </p>
-              </div>
-              
-              <div className="p-4 bg-gradient-to-r from-orange-50 to-yellow-50 rounded-xl border-l-4 border-orange-500">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-bold text-blue-900">Aviso Financeiro</span>
-                  <span className="text-xs text-blue-700">Há 5 dias</span>
-                </div>
-                <p className="text-sm text-blue-800">
-                  Mensalidade de dezembro com vencimento para 10/12. Acesse o portal financeiro.
-                </p>
-              </div>
-              
-              <div className="p-4 bg-gradient-to-r from-yellow-50 to-green-50 rounded-xl border-l-4 border-yellow-500">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-bold text-blue-900">Evento Importante</span>
-                  <span className="text-xs text-blue-700">Há 1 semana</span>
-                </div>
-                <p className="text-sm text-blue-800">
-                  Cerimônia de formatura será realizada em dezembro. Mais informações em breve.
-                </p>
+                ))}
               </div>
             </div>
           </div>
 
           {/* Quick Actions */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 border-t-4 border-blue-900">
-            <h2 className="text-xl font-bold text-blue-900 mb-6 flex items-center">
-              ⚡ Ações Rápidas
-            </h2>
-            <div className="grid grid-cols-2 gap-4">
-              <button className="flex flex-col items-center p-4 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl hover:from-blue-200 hover:to-blue-300 transition-all shadow-md hover:shadow-lg">
-                <BookOpen className="w-8 h-8 text-blue-900 mb-2" />
-                <span className="text-sm font-bold text-blue-900 text-center">Portal Acadêmico</span>
-              </button>
-              <button className="flex flex-col items-center p-4 bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl hover:from-orange-200 hover:to-orange-300 transition-all shadow-md hover:shadow-lg">
-                <MessageCircle className="w-8 h-8 text-orange-700 mb-2" />
-                <span className="text-sm font-bold text-orange-700 text-center">Mensagens</span>
-              </button>
-              <button className="flex flex-col items-center p-4 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-xl hover:from-yellow-200 hover:to-yellow-300 transition-all shadow-md hover:shadow-lg">
-                <Calendar className="w-8 h-8 text-yellow-700 mb-2" />
-                <span className="text-sm font-bold text-yellow-700 text-center">Calendário Completo</span>
-              </button>
-              <button className="flex flex-col items-center p-4 bg-gradient-to-br from-green-100 to-green-200 rounded-xl hover:from-green-200 hover:to-green-300 transition-all shadow-md hover:shadow-lg">
-                <Bell className="w-8 h-8 text-green-700 mb-2" />
-                <span className="text-sm font-bold text-green-700 text-center">Notificações</span>
-              </button>
+          <div>
+            <div className="bg-gradient-to-br from-white to-emerald-50/50 rounded-3xl shadow-2xl p-8 border border-emerald-200/30 backdrop-blur-sm">
+              <h2 className="text-2xl font-bold bg-gradient-to-r from-emerald-800 to-teal-800 bg-clip-text text-transparent mb-6 flex items-center">
+                ⚡ Ações Rápidas
+              </h2>
+              <div className="space-y-4">
+                <button 
+                  onClick={() => setShowNotifications(!showNotifications)}
+                  className="w-full p-4 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center group relative"
+                >
+                  <Bell className="w-5 h-5 mr-2 group-hover:animate-pulse" />
+                  Ver Notificações 
+                  {notifications.filter(n => !n.read).length > 0 && (
+                    <span className="ml-2 bg-red-500 text-white text-xs rounded-full px-2 py-1">
+                      {notifications.filter(n => !n.read).length}
+                    </span>
+                  )}
+                </button>
+                <button 
+                  onClick={() => setShowContactForm(!showContactForm)}
+                  className="w-full p-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center group"
+                >
+                  <MessageCircle className="w-5 h-5 mr-2 group-hover:animate-bounce" />
+                  Contato Coordenação
+                </button>
+                <button className="w-full p-4 bg-gradient-to-r from-teal-500 to-green-500 text-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center group">
+                  <Calendar className="w-5 h-5 mr-2 group-hover:animate-pulse" />
+                  Agenda de Provas
+                </button>
+                <button className="w-full p-4 bg-gradient-to-r from-green-400 to-emerald-400 text-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center group">
+                  <BookOpen className="w-5 h-5 mr-2 group-hover:animate-bounce" />
+                  Material Didático
+                </button>
+                <button className="w-full p-4 bg-gradient-to-r from-emerald-400 to-teal-400 text-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center group">
+                  <FileText className="w-5 h-5 mr-2 group-hover:animate-pulse" />
+                  Histórico Escolar
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Important Alerts */}
         <div className="mt-8">
-          <div className="bg-gradient-to-r from-orange-100 to-yellow-100 border-2 border-orange-300 rounded-2xl p-6">
+          <div className="bg-gradient-to-r from-green-100 to-emerald-100 border-2 border-green-300 rounded-2xl p-6">
             <div className="flex items-center space-x-3">
-              <AlertCircle className="w-8 h-8 text-orange-600 flex-shrink-0" />
+              <AlertCircle className="w-8 h-8 text-green-600 flex-shrink-0" />
               <div>
-                <h3 className="text-lg font-bold text-orange-800 mb-2">⚠️ Avisos Importantes</h3>
+                <h3 className="text-lg font-bold text-green-800 mb-2">⚠️ Avisos Importantes</h3>
                 <div className="space-y-2">
-                  <p className="text-sm text-orange-700">
+                  <p className="text-sm text-green-700">
                     • <strong>Período de Matrículas:</strong> De 15 a 30 de dezembro
                   </p>
-                  <p className="text-sm text-orange-700">
+                  <p className="text-sm text-green-700">
                     • <strong>Recesso Acadêmico:</strong> 23 de dezembro a 6 de janeiro
                   </p>
-                  <p className="text-sm text-orange-700">
+                  <p className="text-sm text-green-700">
                     • <strong>Início das Aulas:</strong> 10 de fevereiro de 2025
                   </p>
                 </div>
@@ -319,6 +309,165 @@ const GuardianDashboard = () => {
           </div>
         </div>
       </div>
+
+      {/* Notifications Modal */}
+      {showNotifications && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-hidden">
+            <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white p-6">
+              <div className="flex items-center justify-between">
+                <h2 className="text-xl font-bold flex items-center">
+                  <Bell className="w-6 h-6 mr-2" />
+                  Central de Notificações
+                </h2>
+                <button
+                  onClick={() => setShowNotifications(false)}
+                  className="text-white hover:text-green-200 transition-colors"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+            </div>
+            <div className="p-6 max-h-96 overflow-y-auto">
+              {notifications.length > 0 ? (
+                <div className="space-y-4">
+                  {notifications.map((notification) => (
+                    <div
+                      key={notification.id}
+                      className={`p-4 rounded-xl border-l-4 ${
+                        notification.read
+                          ? 'bg-gray-50 border-gray-400'
+                          : 'bg-green-50 border-green-500'
+                      }`}
+                    >
+                      <div className="flex items-start justify-between">
+                        <div className="flex-1">
+                          <h3 className="font-semibold text-green-900 mb-1">
+                            {notification.title}
+                          </h3>
+                          <p className="text-sm text-green-700 mb-2">
+                            {notification.message}
+                          </p>
+                          <p className="text-xs text-green-600">{notification.date}</p>
+                        </div>
+                        {!notification.read && (
+                          <button
+                            onClick={() => {
+                              setNotifications(notifications.map(n =>
+                                n.id === notification.id ? { ...n, read: true } : n
+                              ));
+                            }}
+                            className="bg-green-600 text-white px-3 py-1 rounded-full text-xs hover:bg-green-700 transition-colors"
+                          >
+                            <Eye className="w-3 h-3" />
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-8">
+                  <Bell className="w-12 h-12 text-gray-300 mx-auto mb-3" />
+                  <p className="text-gray-500">Nenhuma notificação no momento</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Contact Form Modal */}
+      {showContactForm && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full">
+            <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white p-6">
+              <div className="flex items-center justify-between">
+                <h2 className="text-xl font-bold flex items-center">
+                  <MessageCircle className="w-6 h-6 mr-2" />
+                  Contato com a Coordenação
+                </h2>
+                <button
+                  onClick={() => setShowContactForm(false)}
+                  className="text-white hover:text-emerald-200 transition-colors"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+            </div>
+            <div className="p-6">
+              <form onSubmit={(e) => {
+                e.preventDefault();
+                alert('Mensagem enviada com sucesso!');
+                setShowContactForm(false);
+                setContactForm({ subject: '', message: '', priority: 'normal' });
+              }}>
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-emerald-700 mb-1">
+                      Assunto
+                    </label>
+                    <input
+                      type="text"
+                      value={contactForm.subject}
+                      onChange={(e) => setContactForm({ ...contactForm, subject: e.target.value })}
+                      className="w-full px-3 py-2 border border-emerald-300 rounded-lg focus:outline-none focus:border-emerald-500"
+                      placeholder="Digite o assunto da mensagem"
+                      required
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-emerald-700 mb-1">
+                      Prioridade
+                    </label>
+                    <select
+                      value={contactForm.priority}
+                      onChange={(e) => setContactForm({ ...contactForm, priority: e.target.value })}
+                      className="w-full px-3 py-2 border border-emerald-300 rounded-lg focus:outline-none focus:border-emerald-500"
+                    >
+                      <option value="baixa">Baixa</option>
+                      <option value="normal">Normal</option>
+                      <option value="alta">Alta</option>
+                      <option value="urgente">Urgente</option>
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-emerald-700 mb-1">
+                      Mensagem
+                    </label>
+                    <textarea
+                      value={contactForm.message}
+                      onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
+                      rows={4}
+                      className="w-full px-3 py-2 border border-emerald-300 rounded-lg focus:outline-none focus:border-emerald-500"
+                      placeholder="Digite sua mensagem aqui..."
+                      required
+                    ></textarea>
+                  </div>
+                </div>
+                
+                <div className="flex space-x-3 mt-6">
+                  <button
+                    type="button"
+                    onClick={() => setShowContactForm(false)}
+                    className="flex-1 px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors"
+                  >
+                    Cancelar
+                  </button>
+                  <button
+                    type="submit"
+                    className="flex-1 px-4 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-lg hover:from-emerald-700 hover:to-teal-700 transition-all"
+                  >
+                    Enviar
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
