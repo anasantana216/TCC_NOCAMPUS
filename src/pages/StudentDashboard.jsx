@@ -94,10 +94,14 @@ const StudentDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50/30 via-white to-orange-50 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-yellow-200/20 to-orange-200/20 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-20 left-20 w-48 h-48 bg-gradient-to-br from-blue-200/20 to-purple-200/20 rounded-full blur-2xl animate-pulse delay-1000"></div>
+      <div className="absolute top-1/2 right-10 w-32 h-32 bg-gradient-to-br from-indigo-200/15 to-pink-200/15 rounded-full blur-xl animate-pulse delay-2000"></div>
       
       {/* Top Navigation */}
-      <div className="bg-white shadow-lg border-b-4 border-blue-900">
+      <div className="bg-gradient-to-r from-white via-blue-50/50 to-white shadow-2xl border-b-4 border-gradient-to-r from-blue-900 to-indigo-900 relative z-10">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
@@ -120,60 +124,60 @@ const StudentDashboard = () => {
       <div className="max-w-7xl mx-auto p-6">
         
         {/* Header */}
-        <div className="mb-8 text-center">
-          <h1 className="text-4xl font-bold text-blue-900 mb-3">
+        <div className="mb-8 text-center relative z-10">
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-900 via-purple-800 to-blue-900 bg-clip-text text-transparent mb-4">
             Bem-vindo de volta! 🎓
           </h1>
-          <p className="text-blue-700 text-lg">
+          <p className="text-blue-700 text-xl font-medium">
             Acompanhe suas atividades acadêmicas no UNASP Engenheiro Coelho
           </p>
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white rounded-2xl shadow-lg p-6 border-l-4 border-blue-900 hover:shadow-xl transition-shadow">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8 relative z-10">
+          <div className="bg-gradient-to-br from-white to-blue-50/50 rounded-3xl shadow-xl p-6 border border-blue-200/30 hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-rotate-1 group">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-blue-700 text-sm font-medium">Eventos Este Mês</p>
-                <p className="text-3xl font-bold text-blue-900">{events.length}</p>
+                <p className="text-4xl font-bold bg-gradient-to-r from-blue-900 to-indigo-800 bg-clip-text text-transparent">{events.length}</p>
               </div>
-              <div className="bg-blue-100 p-3 rounded-full">
-                <Calendar className="w-8 h-8 text-blue-900" />
+              <div className="bg-gradient-to-br from-blue-100 via-blue-200 to-indigo-200 p-4 rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300 border-2 border-white/50">
+                <Calendar className="w-10 h-10 text-blue-900 group-hover:scale-110 transition-transform duration-300" />
               </div>
             </div>
           </div>
           
-          <div className="bg-white rounded-2xl shadow-lg p-6 border-l-4 border-orange-500 hover:shadow-xl transition-shadow">
+          <div className="bg-gradient-to-br from-white to-orange-50/50 rounded-3xl shadow-xl p-6 border border-orange-200/30 hover:shadow-2xl transition-all duration-300 transform hover:scale-105 group">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-orange-700 text-sm font-medium">Enquetes Ativas</p>
-                <p className="text-3xl font-bold text-orange-600">{polls.length}</p>
+                <p className="text-4xl font-bold bg-gradient-to-r from-orange-600 to-yellow-600 bg-clip-text text-transparent">{polls.length}</p>
               </div>
-              <div className="bg-orange-100 p-3 rounded-full">
-                <TrendingUp className="w-8 h-8 text-orange-600" />
+              <div className="bg-gradient-to-br from-orange-100 via-orange-200 to-yellow-200 p-4 rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300 border-2 border-white/50">
+                <TrendingUp className="w-10 h-10 text-orange-600 group-hover:scale-110 transition-transform duration-300" />
               </div>
             </div>
           </div>
           
-          <div className="bg-white rounded-2xl shadow-lg p-6 border-l-4 border-yellow-500 hover:shadow-xl transition-shadow">
+          <div className="bg-gradient-to-br from-white to-yellow-50/50 rounded-3xl shadow-xl p-6 border border-yellow-200/30 hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:rotate-1 group">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-yellow-700 text-sm font-medium">Próximos Eventos</p>
-                <p className="text-3xl font-bold text-yellow-600">{upcomingEvents.length}</p>
+                <p className="text-4xl font-bold bg-gradient-to-r from-yellow-600 to-orange-600 bg-clip-text text-transparent">{upcomingEvents.length}</p>
               </div>
-              <div className="bg-yellow-100 p-3 rounded-full">
-                <Clock className="w-8 h-8 text-yellow-600" />
+              <div className="bg-gradient-to-br from-yellow-100 via-yellow-200 to-orange-200 p-4 rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300 border-2 border-white/50">
+                <Clock className="w-10 h-10 text-yellow-700 group-hover:scale-110 transition-transform duration-300" />
               </div>
             </div>
           </div>
           
-          <div className="bg-white rounded-2xl shadow-lg p-6 border-l-4 border-blue-500 hover:shadow-xl transition-shadow">
+          <div className="bg-gradient-to-br from-white to-green-50/50 rounded-3xl shadow-xl p-6 border border-green-200/30 hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-rotate-1 group">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-blue-700 text-sm font-medium">Minhas Votações</p>
-                <p className="text-3xl font-bold text-blue-600">8</p>
+                <p className="text-green-700 text-sm font-medium">Minhas Votações</p>
+                <p className="text-4xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">8</p>
               </div>
-              <div className="bg-blue-100 p-3 rounded-full">
+              <div className="bg-gradient-to-br from-green-100 via-green-200 to-blue-200 p-4 rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300 border-2 border-white/50">
                 <Users className="w-8 h-8 text-blue-600" />
               </div>
             </div>

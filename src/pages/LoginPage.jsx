@@ -91,26 +91,36 @@ const LoginPage = () => {
   const selectedType = userTypes.find(type => type.id === userType);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50/30 via-white to-orange-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-yellow-300/20 to-orange-300/20 rounded-full blur-xl"></div>
+      <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-br from-blue-300/20 to-purple-300/20 rounded-full blur-xl"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-indigo-200/10 to-orange-200/10 rounded-full blur-3xl"></div>
+      
       {/* Header */}
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white rounded-2xl shadow-xl p-8 border-t-4 border-blue-900">
+      <div className="sm:mx-auto sm:w-full sm:max-w-md relative z-10">
+        <div className="bg-gradient-to-br from-white to-blue-50/50 rounded-3xl shadow-2xl p-8 border border-blue-200/30 backdrop-blur-sm relative">
+          <div className="absolute -top-2 -left-2 w-4 h-4 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full"></div>
+          <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-blue-900 to-purple-600 rounded-full"></div>
+          <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-gradient-to-br from-orange-500 to-red-500 rounded-full"></div>
+          <div className="absolute -bottom-2 -right-2 w-4 h-4 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-full"></div>
+          
           <Link to="/" className="flex justify-center items-center mb-6">
-            <h1 className="text-5xl font-bold">
-              <span className="text-blue-900">No</span><span className="text-yellow-500">Campus</span>
+            <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-900 via-purple-800 to-blue-900 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-900 to-indigo-800 bg-clip-text text-transparent">No</span><span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">Campus</span>
             </h1>
           </Link>
-          <h2 className="mt-6 text-center text-3xl font-bold text-blue-900">
+          <h2 className="mt-6 text-center text-3xl font-bold bg-gradient-to-r from-blue-900 to-indigo-800 bg-clip-text text-transparent">
             🔑 Entre na sua conta
           </h2>
-          <p className="mt-4 text-center text-sm text-orange-600 font-semibold bg-orange-50 py-2 px-4 rounded-full">
+          <p className="mt-4 text-center text-sm text-orange-600 font-semibold bg-gradient-to-r from-orange-50 to-yellow-50 py-3 px-6 rounded-full border border-orange-200/50 shadow-md">
             Centro Universitário Adventista de Engenheiro Coelho - UNASP
           </p>
         </div>
       </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-6 shadow-xl rounded-2xl border-2 border-blue-100">
+      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md relative z-10">
+        <div className="bg-gradient-to-br from-white to-blue-50/30 py-8 px-6 shadow-2xl rounded-3xl border border-blue-200/30 backdrop-blur-sm">
           
           {/* User Type Selection */}
           <div className="mb-8">
@@ -126,26 +136,28 @@ const LoginPage = () => {
                     key={type.id}
                     type="button"
                     onClick={() => setUserType(type.id)}
-                    className={`p-4 rounded-xl border-2 transition-all duration-200 text-left shadow-sm hover:shadow-md ${
+                    className={`p-4 rounded-2xl border-2 transition-all duration-300 text-left shadow-lg hover:shadow-xl transform hover:scale-102 ${
                       isSelected
-                        ? type.color === 'blue' ? 'border-blue-900 bg-gradient-to-r from-blue-50 to-blue-100' :
-                          type.color === 'purple' ? 'border-orange-500 bg-gradient-to-r from-orange-50 to-orange-100' :
-                          'border-yellow-500 bg-gradient-to-r from-yellow-50 to-yellow-100'
-                        : 'border-blue-200 hover:border-blue-300 bg-white hover:bg-blue-50'
+                        ? type.color === 'blue' ? 'border-blue-600 bg-gradient-to-r from-blue-50 via-indigo-50 to-blue-100 shadow-blue-200/50' :
+                          type.color === 'purple' ? 'border-orange-500 bg-gradient-to-r from-orange-50 via-yellow-50 to-orange-100 shadow-orange-200/50' :
+                          'border-yellow-500 bg-gradient-to-r from-yellow-50 via-green-50 to-yellow-100 shadow-yellow-200/50'
+                        : 'border-blue-200/50 hover:border-blue-400/70 bg-white hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-indigo-50/50'
                     }`}
                   >
                     <div className="flex items-center">
-                      <div className={`w-10 h-10 rounded-full flex items-center justify-center mr-3 ${
+                      <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mr-4 shadow-md transition-all duration-300 ${
                         isSelected 
-                          ? type.color === 'blue' ? 'bg-blue-600' :
-                            type.color === 'purple' ? 'bg-purple-600' : 'bg-green-600'
-                          : type.color === 'blue' ? 'bg-blue-100' :
-                            type.color === 'purple' ? 'bg-purple-100' : 'bg-green-100'
+                          ? type.color === 'blue' ? 'bg-gradient-to-br from-blue-600 to-indigo-700 shadow-blue-300/50' :
+                            type.color === 'purple' ? 'bg-gradient-to-br from-orange-500 to-yellow-600 shadow-orange-300/50' : 
+                            'bg-gradient-to-br from-yellow-500 to-green-600 shadow-yellow-300/50'
+                          : type.color === 'blue' ? 'bg-gradient-to-br from-blue-100 to-indigo-200' :
+                            type.color === 'purple' ? 'bg-gradient-to-br from-orange-100 to-yellow-200' : 
+                            'bg-gradient-to-br from-yellow-100 to-green-200'
                       }`}>
-                        <IconComponent className={`w-5 h-5 ${
-                          isSelected ? 'text-white' : 
-                          type.color === 'blue' ? 'text-blue-600' :
-                          type.color === 'purple' ? 'text-purple-600' : 'text-green-600'
+                        <IconComponent className={`w-6 h-6 transition-all duration-300 ${
+                          isSelected ? 'text-white scale-110' : 
+                          type.color === 'blue' ? 'text-blue-700' :
+                          type.color === 'purple' ? 'text-orange-700' : 'text-yellow-700'
                         }`} />
                       </div>
                       <div>
