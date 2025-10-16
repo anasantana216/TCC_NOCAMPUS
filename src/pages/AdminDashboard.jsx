@@ -77,10 +77,13 @@ const AdminDashboard = () => {
               <span className="text-gray-300">|</span>
               <span className="bg-gradient-to-r from-blue-900 to-purple-800 bg-clip-text text-transparent font-semibold">Dashboard Administrativo</span>
             </div>
-            <div className="flex items-center space-x-4">
-              <a href="/admin/events" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-700 transition-all duration-300 font-medium px-4 py-2 rounded-xl shadow-md hover:shadow-lg">Eventos</a>
-              <a href="/admin/polls" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-600 transition-all duration-300 font-medium px-4 py-2 rounded-xl shadow-md hover:shadow-lg">Enquetes</a>
-              <a href="/admin/notices" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-slate-600 hover:to-blue-700 transition-all duration-300 font-medium px-4 py-2 rounded-xl shadow-md hover:shadow-lg">Avisos</a>
+            <div className="flex items-center space-x-2">
+              <a href="/admin/events" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Eventos</a>
+              <a href="/admin/polls" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-600 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Enquetes</a>
+              <a href="/admin/notices" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-slate-600 hover:to-blue-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Avisos</a>
+              <a href="/admin/users" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-slate-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Usuários</a>
+              <a href="/admin/reports" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-slate-600 hover:to-slate-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Relatórios</a>
+              <a href="/admin/settings" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-blue-700 hover:to-slate-800 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Config</a>
               <LogoutButton variant="default" size="medium" showIcon={false} />
             </div>
           </div>
@@ -166,14 +169,14 @@ const AdminDashboard = () => {
                 <BarChart3 className="w-8 h-8 text-blue-700 mb-2" />
                 <span className="text-sm font-bold text-blue-700">Nova Enquete</span>
               </a>
-              <button className="flex flex-col items-center p-4 bg-gradient-to-br from-slate-100 to-blue-200 rounded-xl hover:from-slate-200 hover:to-blue-300 transition-all shadow-md hover:shadow-lg">
+              <a href="/admin/reports" className="flex flex-col items-center p-4 bg-gradient-to-br from-slate-100 to-blue-200 rounded-xl hover:from-slate-200 hover:to-blue-300 transition-all shadow-md hover:shadow-lg">
                 <FileText className="w-8 h-8 text-slate-700 mb-2" />
                 <span className="text-sm font-bold text-slate-700">Relatórios</span>
-              </button>
-              <button className="flex flex-col items-center p-4 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl hover:from-blue-200 hover:to-blue-300 transition-all shadow-md hover:shadow-lg">
+              </a>
+              <a href="/admin/settings" className="flex flex-col items-center p-4 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl hover:from-blue-200 hover:to-blue-300 transition-all shadow-md hover:shadow-lg">
                 <Settings className="w-8 h-8 text-blue-700 mb-2" />
                 <span className="text-sm font-bold text-blue-700">Configurações</span>
-              </button>
+              </a>
             </div>
           </div>
 

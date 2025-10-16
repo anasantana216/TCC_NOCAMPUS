@@ -12,6 +12,9 @@ import GuardianDashboard from './pages/GuardianDashboard';
 import AdminEventsPage from './pages/AdminEventsPage';
 import AdminPollsPage from './pages/AdminPollsPage';
 import AdminNoticesPage from './pages/AdminNoticesPage';
+import AdminReportsPage from './pages/AdminReportsPage';
+import AdminSettingsPage from './pages/AdminSettingsPage';
+import AdminUsersPage from './pages/AdminUsersPage';
 import './App.css'
 
 function App() {
@@ -24,6 +27,9 @@ function App() {
         <Route path="/admin/events" element={<AdminEventsPage />} />
         <Route path="/admin/polls" element={<AdminPollsPage />} />
         <Route path="/admin/notices" element={<AdminNoticesPage />} />
+        <Route path="/admin/reports" element={<AdminReportsPage />} />
+        <Route path="/admin/settings" element={<AdminSettingsPage />} />
+        <Route path="/admin/users" element={<AdminUsersPage />} />
         <Route path="/guardian/dashboard" element={<GuardianDashboard />} />
         <Route path="/*" element={
           <Layout>
