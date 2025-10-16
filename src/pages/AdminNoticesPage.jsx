@@ -155,13 +155,13 @@ const AdminNoticesPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50/20 via-white to-orange-50 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 via-white to-blue-50 relative overflow-hidden">
       {/* Background decorativo */}
-      <div className="absolute top-10 right-10 w-64 h-64 bg-gradient-to-br from-purple-300/15 to-blue-300/15 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-20 left-10 w-48 h-48 bg-gradient-to-br from-orange-300/15 to-yellow-300/15 rounded-full blur-2xl animate-pulse delay-1000"></div>
+      <div className="absolute top-10 right-10 w-64 h-64 bg-gradient-to-br from-blue-200/15 to-slate-300/15 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-20 left-10 w-48 h-48 bg-gradient-to-br from-blue-300/15 to-blue-100/15 rounded-full blur-2xl animate-pulse delay-1000"></div>
 
       {/* Top Navigation */}
-      <div className="bg-gradient-to-r from-white via-purple-50/30 to-white shadow-2xl border-b-4 border-gradient-to-r from-blue-900 to-purple-900 relative z-10 backdrop-blur-sm">
+      <div className="bg-gradient-to-r from-white via-blue-50/30 to-white shadow-2xl border-b-4 border-gradient-to-r from-blue-900 to-blue-800 relative z-10 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
@@ -194,10 +194,10 @@ const AdminNoticesPage = () => {
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-900 via-purple-800 to-indigo-900 bg-clip-text text-transparent mb-2">
+              <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-900 via-blue-700 to-slate-800 bg-clip-text text-transparent mb-2">
                 📢 Gerenciar Avisos
               </h1>
-              <p className="text-blue-700 text-lg">
+              <p className="text-slate-700 text-lg">
                 Crie e publique avisos importantes para a comunidade UNASP
               </p>
             </div>
