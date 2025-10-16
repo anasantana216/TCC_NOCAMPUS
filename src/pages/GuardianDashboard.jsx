@@ -51,32 +51,36 @@ const GuardianDashboard = () => {
     return (
       <div className="flex items-center justify-center py-16">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900 mx-auto mb-4"></div>
-          <p className="text-blue-700">Carregando informações do estudante...</p>
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-transparent border-t-blue-900 border-r-green-500 mx-auto mb-4"></div>
+          <p className="text-blue-700 font-semibold text-lg">Carregando informações do estudante...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-green-50/20 via-white to-orange-50 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-green-300/15 to-blue-300/15 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-10 right-20 w-48 h-48 bg-gradient-to-br from-orange-300/15 to-yellow-300/15 rounded-full blur-2xl animate-pulse delay-1000"></div>
+      <div className="absolute top-1/2 right-10 w-32 h-32 bg-gradient-to-br from-teal-200/15 to-cyan-200/15 rounded-full blur-xl animate-pulse delay-2000"></div>
       
       {/* Top Navigation */}
-      <div className="bg-white shadow-lg border-b-4 border-blue-900">
+      <div className="bg-gradient-to-r from-white via-green-50/30 to-white shadow-2xl border-b-4 border-gradient-to-r from-blue-900 to-green-900 relative z-10 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <a href="/" className="text-2xl font-bold">
-                <span className="text-blue-900">No</span>
-                <span className="text-yellow-500">Campus</span>
+              <a href="/" className="text-2xl font-bold group">
+                <span className="bg-gradient-to-r from-blue-900 to-indigo-800 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300 inline-block">No</span>
+                <span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300 inline-block">Campus</span>
               </a>
               <span className="text-gray-300">|</span>
-              <span className="text-blue-900 font-medium">Portal do Responsável</span>
+              <span className="bg-gradient-to-r from-blue-900 to-green-800 bg-clip-text text-transparent font-semibold">Portal do Responsável</span>
             </div>
             <div className="flex items-center space-x-4">
-              <div className="text-right">
+              <div className="text-right bg-gradient-to-r from-blue-50 to-green-50 px-4 py-2 rounded-xl border border-blue-200/50 shadow-md">
                 <p className="text-sm text-blue-700">Responsável por:</p>
-                <p className="font-semibold text-blue-900">{studentInfo.name}</p>
+                <p className="font-bold bg-gradient-to-r from-blue-900 to-green-800 bg-clip-text text-transparent">{studentInfo.name}</p>
               </div>
               <LogoutButton variant="default" size="medium" showIcon={false} />
             </div>
@@ -84,43 +88,48 @@ const GuardianDashboard = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto p-6">
+      <div className="max-w-7xl mx-auto p-6 relative z-10">
         
         {/* Header */}
         <div className="mb-8 text-center">
-          <h1 className="text-4xl font-bold text-blue-900 mb-3">
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-900 via-green-800 to-teal-900 bg-clip-text text-transparent mb-4">
             Portal do Responsável 👨‍👩‍👧‍👦
           </h1>
-          <p className="text-blue-700 text-lg">
+          <p className="text-blue-700 text-xl font-medium">
             Acompanhe a vida acadêmica e atividades do estudante na UNASP Engenheiro Coelho
           </p>
         </div>
 
         {/* Student Info Card */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-8 border-t-4 border-blue-900">
-          <h2 className="text-xl font-bold text-blue-900 mb-4 flex items-center">
+        <div className="bg-gradient-to-br from-white to-blue-50/50 rounded-3xl shadow-2xl p-8 mb-8 border border-blue-200/30 backdrop-blur-sm relative">
+          <div className="absolute -top-2 -left-2 w-4 h-4 bg-gradient-to-br from-blue-500 to-green-500 rounded-full"></div>
+          <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-full"></div>
+          <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-gradient-to-br from-green-500 to-teal-500 rounded-full"></div>
+          <div className="absolute -bottom-2 -right-2 w-4 h-4 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full"></div>
+          
+          <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-900 to-green-800 bg-clip-text text-transparent mb-6 flex items-center">
             👨‍🎓 Informações do Estudante
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="text-center p-4 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl">
-              <User className="w-8 h-8 text-blue-900 mx-auto mb-2" />
-              <p className="text-sm text-blue-700 mb-1">Nome Completo</p>
-              <p className="font-bold text-blue-900">{studentInfo.name}</p>
+            <div className="text-center p-6 bg-gradient-to-br from-blue-100 via-blue-200 to-indigo-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group border-2 border-white/30">
+              <User className="w-10 h-10 text-blue-900 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
+              <p className="text-sm text-blue-700 mb-2 font-medium">Nome Completo</p>
+              <p className="font-bold bg-gradient-to-r from-blue-900 to-indigo-800 bg-clip-text text-transparent">{studentInfo.name}</p>
             </div>
-            <div className="text-center p-4 bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl">
-              <BookOpen className="w-8 h-8 text-orange-700 mx-auto mb-2" />
-              <p className="text-sm text-orange-700 mb-1">Curso</p>
-              <p className="font-bold text-orange-700">{studentInfo.course}</p>
+            <div className="text-center p-6 bg-gradient-to-br from-orange-100 via-orange-200 to-yellow-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group border-2 border-white/30">
+              <BookOpen className="w-10 h-10 text-orange-700 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
+              <p className="text-sm text-orange-700 mb-2 font-medium">Curso</p>
+              <p className="font-bold bg-gradient-to-r from-orange-700 to-yellow-700 bg-clip-text text-transparent">{studentInfo.course}</p>
             </div>
-            <div className="text-center p-4 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-xl">
-              <Calendar className="w-8 h-8 text-yellow-700 mx-auto mb-2" />
-              <p className="text-sm text-yellow-700 mb-1">Período</p>
-              <p className="font-bold text-yellow-700">{studentInfo.semester}</p>
+            <div className="text-center p-6 bg-gradient-to-br from-yellow-100 via-yellow-200 to-orange-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group border-2 border-white/30">
+              <Calendar className="w-10 h-10 text-yellow-700 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
+              <p className="text-sm text-yellow-700 mb-2 font-medium">Período</p>
+              <p className="font-bold bg-gradient-to-r from-yellow-700 to-orange-700 bg-clip-text text-transparent">{studentInfo.semester}</p>
             </div>
-            <div className="text-center p-4 bg-gradient-to-br from-green-100 to-green-200 rounded-xl">
-              <CheckCircle className="w-8 h-8 text-green-700 mx-auto mb-2" />
-              <p className="text-sm text-green-700 mb-1">Status</p>
-              <p className="font-bold text-green-700">{studentInfo.status}</p>
+            <div className="text-center p-6 bg-gradient-to-br from-green-100 via-green-200 to-teal-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group border-2 border-white/30">
+              <CheckCircle className="w-10 h-10 text-green-700 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
+              <p className="text-sm text-green-700 mb-2 font-medium">Status</p>
+              <p className="font-bold bg-gradient-to-r from-green-700 to-teal-700 bg-clip-text text-transparent">{studentInfo.status}</p>
             </div>
           </div>
         </div>
