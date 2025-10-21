@@ -203,8 +203,8 @@ const StudentDashboard = () => {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <a href="/" className="text-2xl font-bold text-blue-900">
-                NoCampus
+              <a href="/" className="text-2xl font-bold">
+                <span className="text-blue-900">No</span><span className="text-yellow-500">Campus</span>
               </a>
               <span className="text-gray-300">|</span>
               <span className="text-blue-900 font-medium">Dashboard do Estudante</span>

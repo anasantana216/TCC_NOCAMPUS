@@ -100,10 +100,6 @@ const LoginPage = () => {
       {/* Header */}
       <div className="sm:mx-auto sm:w-full sm:max-w-md relative z-10">
         <div className="bg-gradient-to-br from-white to-blue-50/50 rounded-3xl shadow-2xl p-8 border border-blue-200/30 backdrop-blur-sm relative">
-          <div className="absolute -top-2 -left-2 w-4 h-4 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full"></div>
-          <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-blue-900 to-purple-600 rounded-full"></div>
-          <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-gradient-to-br from-orange-500 to-red-500 rounded-full"></div>
-          <div className="absolute -bottom-2 -right-2 w-4 h-4 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-full"></div>
           
           <Link to="/" className="flex justify-center items-center mb-6">
             <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-900 via-purple-800 to-blue-900 bg-clip-text text-transparent">

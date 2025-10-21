@@ -21,12 +21,12 @@ const AboutPage = () => {
           <div className="bg-gradient-to-br from-orange-100 to-orange-200 w-16 h-16 rounded-full flex items-center justify-center mr-6 shadow-md">
             <Target className="w-8 h-8 text-orange-600" />
           </div>
-          <h2 className="text-3xl font-bold text-blue-900">🎯 Por que o NoCampus foi criado?</h2>
+          <h2 className="text-3xl font-bold text-blue-900">🎯 Por que o <span className="text-blue-900">No</span><span className="text-yellow-500">Campus</span> foi criado?</h2>
         </div>
         
         <div className="space-y-4 text-gray-700">
           <p className="text-lg">
-            O <strong>NoCampus</strong> nasceu da necessidade de conectar melhor a comunidade acadêmica do 
+            O <strong><span className="text-blue-900">No</span><span className="text-yellow-500">Campus</span></strong> nasceu da necessidade de conectar melhor a comunidade acadêmica do 
             Centro Universitário Adventista de Engenheiro Coelho - UNASP.
           </p>
           
@@ -166,7 +166,7 @@ const AboutPage = () => {
           Faça parte da nossa comunidade!
         </h2>
         <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-          O NoCampus é mais que uma plataforma - é o coração digital da nossa comunidade universitária. 
+          O <span className="text-blue-900 font-semibold">No</span><span className="text-yellow-600 font-semibold">Campus</span> é mais que uma plataforma - é o coração digital da nossa comunidade universitária. 
           Junte-se a nós e ajude a construir um campus ainda mais conectado e participativo.
         </p>
         <div className="space-x-4">

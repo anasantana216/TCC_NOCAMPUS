@@ -14,10 +14,6 @@ const HomePage = () => {
         <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-gradient-to-br from-amber-200/20 to-orange-200/20 rounded-full blur-xl"></div>
         
         <div className="bg-gradient-to-br from-white to-orange-50/50 rounded-3xl shadow-2xl p-12 max-w-4xl mx-auto border border-orange-200/30 backdrop-blur-sm relative">
-          <div className="absolute -top-2 -left-2 w-4 h-4 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full"></div>
-          <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-blue-900 to-purple-600 rounded-full"></div>
-          <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-gradient-to-br from-orange-500 to-red-500 rounded-full"></div>
-          <div className="absolute -bottom-2 -right-2 w-4 h-4 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-full"></div>
           
           <h1 className="text-6xl font-bold bg-gradient-to-r from-blue-900 via-yellow-600 to-orange-700 bg-clip-text text-transparent mb-6">
             🎓 Bem-vindo ao <span className="bg-gradient-to-r from-blue-900 to-indigo-800 bg-clip-text text-transparent">No</span><span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">Campus</span>

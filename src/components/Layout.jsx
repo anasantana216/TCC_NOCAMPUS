@@ -134,7 +134,7 @@ const Layout = ({ children }) => {
             Centro Universitário Adventista de Engenheiro Coelho - UNASP
           </p>
           <p className="text-blue-300 text-sm">
-            © 2025 NoCampus UNASP EC. Todos os direitos reservados.
+            © 2025 <span className="text-blue-300">No</span><span className="text-yellow-400">Campus</span> UNASP EC. Todos os direitos reservados.
           </p>
         </div>
       </footer>
