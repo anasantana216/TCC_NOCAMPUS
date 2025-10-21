@@ -2,7 +2,69 @@
 
 Uma plataforma web completa para gerenciar eventos e enquetes no Centro Universitário Adventista de Engenheiro Coelho - UNASP, com dashboards específicos para diferentes tipos de usuários.
 
-## 🚀 Funcionalidades
+## 🚀 Início Rápido
+
+### 📋 Pré-requisitos
+- Node.js 18+ instalado
+- npm ou yarn
+- Git
+
+### ⚡ Iniciar o Projeto (Método Automático)
+```bash
+# Clone o repositório
+git clone https://github.com/anasantana216/TCC_NOCAMPUS.git
+cd TCC_NOCAMPUS
+
+# Execute o script automático
+.\start-dev.ps1
+```
+
+### 🛑 Parar os Servidores
+```bash
+.\stop-dev.ps1
+```
+
+### 🔧 Instalação Manual (se necessário)
+
+1. **Clone o repositório**
+```bash
+git clone https://github.com/anasantana216/TCC_NOCAMPUS.git
+cd TCC_NOCAMPUS
+```
+
+2. **Instale as dependências do frontend**
+```bash
+npm install
+```
+
+3. **Instale as dependências do backend**
+```bash
+cd server
+npm install
+```
+
+4. **Configure o banco de dados**
+```bash
+npx prisma generate
+npx prisma migrate dev
+node seed-new.js
+```
+
+5. **Inicie os servidores**
+```bash
+# Terminal 1 - Backend (porta 3001)
+cd server
+node index.js
+
+# Terminal 2 - Frontend (porta 5173)
+npm run dev
+```
+
+### 🌐 Acessar o Sistema
+- **Frontend**: http://localhost:5173
+- **Backend API**: http://localhost:3001/api
+
+## 🎯 Funcionalidades
 
 ### 👨‍🎓 Para Estudantes
 - ✅ Dashboard personalizado com calendário de eventos
@@ -163,6 +225,107 @@ TCC_NOCAMPUS-1/
 │   │   ├── StudentDashboard.jsx   # Dashboard do estudante
 │   │   ├── AdminDashboard.jsx     # Dashboard do admin
 │   │   ├── GuardianDashboard.jsx  # Dashboard do responsável
+│   │   └── ...
+│   ├── services/           # Serviços da API
+│   └── hooks/              # Hooks customizados
+├── server/                 # Backend Node.js
+│   ├── prisma/            # Schema e migrações
+│   ├── index.js           # Servidor principal
+│   └── seed-new.js        # Dados iniciais
+├── start-dev.ps1          # Script automático (PowerShell)
+├── start-dev.bat          # Script automático (Batch)
+└── stop-dev.ps1           # Script para parar servidores
+```
+
+## 🚨 Solução de Problemas
+
+### ❌ Erro: "localhost se recusou a conectar"
+
+**Problema**: Os servidores não estão rodando.
+
+**Solução Rápida**:
+```bash
+.\start-dev.ps1
+```
+
+**Solução Manual**:
+1. Verificar se Node.js está instalado: `node --version`
+2. Verificar se as portas estão livres:
+   ```bash
+   netstat -an | findstr :3001  # Backend
+   netstat -an | findstr :5173  # Frontend
+   ```
+3. Parar processos se necessário:
+   ```bash
+   .\stop-dev.ps1
+   ```
+4. Reinstalar dependências se necessário:
+   ```bash
+   rm -rf node_modules server/node_modules
+   npm install
+   cd server && npm install
+   ```
+
+### ❌ Erro: "Cannot find module"
+
+**Problema**: Dependências não instaladas.
+
+**Solução**:
+```bash
+npm install
+cd server && npm install
+```
+
+### ❌ Erro: "Database connection failed"
+
+**Problema**: Banco de dados não inicializado.
+
+**Solução**:
+```bash
+cd server
+npx prisma generate
+npx prisma migrate dev
+node seed-new.js
+```
+
+### ❌ Erro: "Port already in use"
+
+**Problema**: Portas 3001 ou 5173 já estão sendo usadas.
+
+**Solução**:
+```bash
+.\stop-dev.ps1
+.\start-dev.ps1
+```
+
+### 🔧 Comandos Úteis
+
+```bash
+# Verificar status dos servidores
+netstat -an | findstr ":3001 :5173"
+
+# Logs do backend
+cd server && node index.js
+
+# Logs do frontend
+npm run dev
+
+# Rebuild completo
+npm run build
+
+# Reset completo do projeto
+.\stop-dev.ps1
+rm -rf node_modules server/node_modules server/prisma/dev.db
+.\start-dev.ps1
+```
+
+## 📞 Suporte
+
+Se os problemas persistirem:
+1. Verifique se o Node.js 18+ está instalado
+2. Execute `.\start-dev.ps1` como administrador
+3. Verifique se as portas 3001 e 5173 não estão bloqueadas pelo firewall
+4. Consulte os logs nos terminais abertos pelos scripts
 │   │   └── AboutPage.jsx    # Sobre a universidade
 │   ├── hooks/              # Custom hooks
 │   │   └── useAuth.js      # Hook de autenticação

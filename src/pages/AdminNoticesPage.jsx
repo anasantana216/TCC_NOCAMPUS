@@ -1,52 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import { Bell, Plus, Edit3, Trash2, Send, AlertCircle, Info, CheckCircle, Users, Calendar, Eye, EyeOff } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { noticesAPI } from '../services/api';
 import LogoutButton from '../components/LogoutButton';
 import AdminBreadcrumb from '../components/AdminBreadcrumb';
 
 const AdminNoticesPage = () => {
-  const [notices, setNotices] = useState([
-    {
-      id: 1,
-      title: "Período de Matrículas 2025.1",
-      content: "As matrículas para o primeiro semestre de 2025 estarão abertas de 15 de novembro a 15 de dezembro. Não perca o prazo!",
-      type: "info",
-      priority: "high",
-      targetAudience: ["students", "guardians"],
-      isActive: true,
-      publishDate: "2024-11-01",
-      expiryDate: "2024-12-15",
-      createdAt: "2024-10-15T10:00:00Z",
-      views: 145
-    },
-    {
-      id: 2,
-      title: "Semana de Provas - Novembro",
-      content: "A semana de provas do 2º bimestre acontecerá de 18 a 22 de novembro. Consulte os horários no portal acadêmico.",
-      type: "warning",
-      priority: "high",
-      targetAudience: ["students"],
-      isActive: true,
-      publishDate: "2024-10-20",
-      expiryDate: "2024-11-22",
-      createdAt: "2024-10-15T14:30:00Z",
-      views: 89
-    }
-  ]);
-  
-  const [loading, setLoading] = useState(false);
+  const [notices, setNotices] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [editingNotice, setEditingNotice] = useState(null);
   const [formData, setFormData] = useState({
     title: '',
     content: '',
-    type: 'info',
-    priority: 'medium',
-    targetAudience: [],
-    publishDate: '',
-    expiryDate: '',
+    type: 'general',
+    priority: 'normal',
+    targetAudience: 'all',
     isActive: true
   });
+
+  useEffect(() => {
+    fetchNotices();
+  }, []);
+
+  const fetchNotices = async () => {
+    try {
+      setLoading(true);
+      const response = await noticesAPI.getAll();
+      setNotices(response.data);
+    } catch (err) {
+      console.error('Erro ao carregar avisos:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const noticeTypes = [
     { value: 'info', label: 'Informativo', icon: Info, color: 'blue' },
