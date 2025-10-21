@@ -18,6 +18,7 @@ const AdminEventsPage = () => {
     location: '',
     category: '',
     capacity: '',
+    organizer: '',
     isActive: true
   });
 
@@ -59,27 +60,34 @@ const AdminEventsPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
+      
       if (editingEvent) {
-        // Simular edição
+        // Editar evento existente
+        const response = await eventsAPI.update(editingEvent.id, formData);
         const updatedEvents = events.map(event => 
-          event.id === editingEvent.id ? { ...formData, id: editingEvent.id } : event
+          event.id === editingEvent.id ? response.data : event
         );
         setEvents(updatedEvents);
         setEditingEvent(null);
       } else {
-        // Simular criação
-        const newEvent = { ...formData, id: Date.now() };
-        setEvents([...events, newEvent]);
+        // Criar novo evento
+        const response = await eventsAPI.create(formData);
+        setEvents([response.data, ...events]);
         setShowCreateForm(false);
       }
       
       // Reset form
       setFormData({
         title: '', description: '', date: '', time: '', location: '', 
-        category: '', capacity: '', isActive: true
+        category: '', capacity: '', organizer: '', isActive: true
       });
+      
     } catch (err) {
       console.error('Erro ao salvar evento:', err);
+      alert('Erro ao salvar evento. Tente novamente.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -91,7 +99,13 @@ const AdminEventsPage = () => {
 
   const handleDelete = async (eventId) => {
     if (window.confirm('Tem certeza que deseja excluir este evento?')) {
-      setEvents(events.filter(event => event.id !== eventId));
+      try {
+        await eventsAPI.delete(eventId);
+        setEvents(events.filter(event => event.id !== eventId));
+      } catch (err) {
+        console.error('Erro ao excluir evento:', err);
+        alert('Erro ao excluir evento. Tente novamente.');
+      }
     }
   };
 
@@ -258,6 +272,19 @@ const AdminEventsPage = () => {
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 rounded-xl border-2 border-blue-200/50 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
                     min="1"
+                    placeholder="Ex: 100"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-bold text-blue-900 mb-2">Organizador</label>
+                  <input
+                    type="text"
+                    name="organizer"
+                    value={formData.organizer}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 rounded-xl border-2 border-blue-200/50 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
+                    placeholder="Ex: Coordenação de Engenharia"
                   />
                 </div>
               </div>

@@ -65,25 +65,29 @@ const AdminPollsPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
+      
       const pollData = {
-        ...formData,
-        options: formData.options.filter(opt => opt.trim() !== '').map(opt => ({
-          text: opt,
-          votes: 0
-        }))
+        title: formData.title,
+        description: formData.description,
+        allowMultiple: formData.allowMultiple,
+        endDate: formData.endDate,
+        isActive: formData.isActive,
+        options: formData.options.filter(opt => opt.trim() !== '')
       };
 
       if (editingPoll) {
-        // Simular edição
+        // Editar enquete existente
+        const response = await pollsAPI.update(editingPoll.id, pollData);
         const updatedPolls = polls.map(poll => 
-          poll.id === editingPoll.id ? { ...pollData, id: editingPoll.id } : poll
+          poll.id === editingPoll.id ? response.data : poll
         );
         setPolls(updatedPolls);
         setEditingPoll(null);
       } else {
-        // Simular criação
-        const newPoll = { ...pollData, id: Date.now(), createdAt: new Date().toISOString() };
-        setPolls([...polls, newPoll]);
+        // Criar nova enquete
+        const response = await pollsAPI.create(pollData);
+        setPolls([response.data, ...polls]);
         setShowCreateForm(false);
       }
       
@@ -92,12 +96,51 @@ const AdminPollsPage = () => {
         title: '', description: '', options: ['', ''], 
         isActive: true, allowMultiple: false, endDate: ''
       });
+      
     } catch (err) {
       console.error('Erro ao salvar enquete:', err);
+      alert('Erro ao salvar enquete. Tente novamente.');
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleEdit = (poll) => {
+    setEditingPoll(poll);
+    setFormData({
+      ...poll,
+      options: poll.options ? poll.options.map(opt => opt.text) : ['', '']
+    });
+    setShowCreateForm(true);
+  };
+
+  const handleDelete = async (pollId) => {
+    if (window.confirm('Tem certeza que deseja excluir esta enquete?')) {
+      try {
+        await pollsAPI.delete(pollId);
+        setPolls(polls.filter(poll => poll.id !== pollId));
+      } catch (err) {
+        console.error('Erro ao excluir enquete:', err);
+        alert('Erro ao excluir enquete. Tente novamente.');
+      }
+    }
+  };
+
+  const togglePollStatus = async (poll) => {
+    try {
+      const response = await pollsAPI.update(poll.id, { 
+        ...poll, 
+        isActive: !poll.isActive 
+      });
+      const updatedPolls = polls.map(p => 
+        p.id === poll.id ? response.data : p
+      );
+      setPolls(updatedPolls);
+    } catch (err) {
+      console.error('Erro ao alterar status da enquete:', err);
+      alert('Erro ao alterar status da enquete. Tente novamente.');
+    }
+  };
     setEditingPoll(poll);
     setFormData({
       ...poll,

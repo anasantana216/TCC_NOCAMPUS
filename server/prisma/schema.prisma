@@ -15,8 +15,13 @@ model Event {
   title       String
   description String?
   date        String
+  time        String?
   location    String?
   category    String?
+  capacity    Int?
+  isActive    Boolean  @default(true)
+  imageUrl    String?
+  organizer   String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
@@ -28,6 +33,8 @@ model Poll {
   title       String
   description String?
   isActive    Boolean  @default(true)
+  allowMultiple Boolean @default(false)
+  endDate     String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   options     PollOption[]
@@ -43,4 +50,33 @@ model PollOption {
   poll   Poll   @relation(fields: [pollId], references: [id], onDelete: Cascade)
 
   @@map("poll_options")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  role      String   @default("student") // student, admin, guardian
+  studentId String?
+  course    String?
+  semester  String?
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Notice {
+  id          String   @id @default(cuid())
+  title       String
+  content     String
+  type        String   @default("general") // urgent, general, academic
+  isActive    Boolean  @default(true)
+  priority    String   @default("normal") // high, normal, low
+  targetAudience String @default("all") // all, students, guardians
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("notices")
 }
