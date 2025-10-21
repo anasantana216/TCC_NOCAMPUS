@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, MapPin, Clock, Plus, Search, Filter, Users, ChevronDown } from 'lucide-react';
+import { Calendar, MapPin, Clock, Plus, Search, Filter, Users, ChevronDown, ArrowLeft, ExternalLink } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { eventsAPI } from '../services/api';
 
 const EventsPage = () => {
@@ -72,6 +73,14 @@ const EventsPage = () => {
     });
   };
 
+  const handleRSVP = (eventId) => {
+    setEvents(events.map(event => 
+      event.id === eventId 
+        ? { ...event, rsvp: !event.rsvp }
+        : event
+    ));
+  };
+
   if (loading) {
     return (
       <div className="flex items-center justify-center py-16">
@@ -85,6 +94,17 @@ const EventsPage = () => {
 
   return (
     <div className="py-8">
+      {/* Back Button */}
+      <div className="mb-6">
+        <Link
+          to="/"
+          className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors font-medium"
+        >
+          <ArrowLeft className="w-4 h-4 mr-2" />
+          Voltar ao Início
+        </Link>
+      </div>
+
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
         <div>
@@ -93,10 +113,10 @@ const EventsPage = () => {
         </div>
         <button
           className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center"
-          onClick={() => alert('Funcionalidade em desenvolvimento')}
+          onClick={() => alert('Funcionalidade em desenvolvimento: Em breve você poderá sugerir eventos!')}
         >
           <Plus className="w-5 h-5 mr-2" />
-          Criar Evento
+          Sugerir Evento
         </button>
       </div>
 
@@ -182,8 +202,13 @@ const EventsPage = () => {
                   </div>
                   {event.location && (
                     <div className="flex items-center">
-                      <MapPin className="w-4 h-4 mr-2" />
-                      {event.location}
+                      <button 
+                        className="text-blue-600 hover:text-blue-800 flex items-center"
+                        onClick={() => window.open(`https://www.google.com/maps/search/${encodeURIComponent(event.location)}`, '_blank')}
+                      >
+                        <MapPin className="w-4 h-4 mr-2" />
+                        {event.location}
+                      </button>
                     </div>
                   )}
                 </div>
@@ -191,14 +216,34 @@ const EventsPage = () => {
                 {/* Description */}
                 <p className="text-gray-700 mb-6 line-clamp-3">{event.description}</p>
 
-                {/* Action Button */}
-                <button
-                  className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center"
-                  onClick={() => alert('Ver detalhes do evento')}
-                >
-                  <Users className="w-4 h-4 mr-2" />
-                  Participar
-                </button>
+                {/* Action Buttons */}
+                <div className="space-y-3">
+                  <button
+                    className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center"
+                    onClick={() => handleRSVP(event.id)}
+                  >
+                    <Users className="w-4 h-4 mr-2" />
+                    {event.rsvp ? 'Confirmado ✓' : 'Participar'}
+                  </button>
+                  <button
+                    className="w-full bg-gray-100 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-200 transition-colors flex items-center justify-center"
+                    onClick={() => {
+                      const eventDate = event.date.replace(/-/g, '');
+                      const eventTime = event.time ? event.time.replace(':', '') + '00' : '120000';
+                      const endTime = event.time ? 
+                        (parseInt(event.time.split(':')[0]) + 2).toString().padStart(2, '0') + 
+                        event.time.split(':')[1] + '00' : '140000';
+                      
+                      window.open(
+                        `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${eventDate}T${eventTime}/${eventDate}T${endTime}&details=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.location || '')}`, 
+                        '_blank'
+                      );
+                    }}
+                  >
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    Adicionar à Agenda
+                  </button>
+                </div>
               </div>
             </div>
           ))}

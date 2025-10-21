@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, Clock, MapPin, Users, Plus, Edit3, Trash2, Eye, Save, X, AlertCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { eventsAPI } from '../services/api';
 import LogoutButton from '../components/LogoutButton';
 import AdminBreadcrumb from '../components/AdminBreadcrumb';

@@ -7,18 +7,19 @@ const HomePage = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="text-center py-20 bg-gradient-to-br from-blue-50 via-purple-50 via-white to-orange-50 relative overflow-hidden">
+      <section className="text-center py-20 bg-gradient-to-br from-yellow-50 via-orange-50/30 via-amber-50 to-yellow-100 relative overflow-hidden">
         {/* Background decorative elements */}
-        <div className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-yellow-300/20 to-orange-300/20 rounded-full blur-xl"></div>
-        <div className="absolute bottom-10 right-10 w-40 h-40 bg-gradient-to-br from-blue-300/20 to-purple-300/20 rounded-full blur-xl"></div>
+        <div className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-yellow-300/25 to-orange-300/25 rounded-full blur-xl"></div>
+        <div className="absolute bottom-10 right-10 w-40 h-40 bg-gradient-to-br from-orange-300/25 to-yellow-300/25 rounded-full blur-xl"></div>
+        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-gradient-to-br from-amber-200/20 to-orange-200/20 rounded-full blur-xl"></div>
         
-        <div className="bg-gradient-to-br from-white to-blue-50/50 rounded-3xl shadow-2xl p-12 max-w-4xl mx-auto border border-blue-200/30 backdrop-blur-sm relative">
+        <div className="bg-gradient-to-br from-white to-orange-50/50 rounded-3xl shadow-2xl p-12 max-w-4xl mx-auto border border-orange-200/30 backdrop-blur-sm relative">
           <div className="absolute -top-2 -left-2 w-4 h-4 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full"></div>
           <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-blue-900 to-purple-600 rounded-full"></div>
           <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-gradient-to-br from-orange-500 to-red-500 rounded-full"></div>
           <div className="absolute -bottom-2 -right-2 w-4 h-4 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-full"></div>
           
-          <h1 className="text-6xl font-bold bg-gradient-to-r from-blue-900 via-purple-800 to-blue-900 bg-clip-text text-transparent mb-6">
+          <h1 className="text-6xl font-bold bg-gradient-to-r from-blue-900 via-yellow-600 to-orange-700 bg-clip-text text-transparent mb-6">
             🎓 Bem-vindo ao <span className="bg-gradient-to-r from-blue-900 to-indigo-800 bg-clip-text text-transparent">No</span><span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">Campus</span>
           </h1>
           <p className="text-xl text-blue-700 mb-6 max-w-3xl mx-auto leading-relaxed">
@@ -39,7 +40,7 @@ const HomePage = () => {
             
             <Link
               to="/login"
-              className="bg-gradient-to-r from-orange-500 via-yellow-500 to-orange-600 text-white px-8 py-4 rounded-2xl text-lg hover:from-orange-600 hover:via-yellow-400 hover:to-orange-700 transition-all duration-300 inline-flex items-center shadow-xl hover:shadow-2xl font-semibold transform hover:scale-105 hover:-rotate-1 border border-orange-400/30 relative overflow-hidden"
+              className="bg-gradient-to-r from-yellow-500 via-orange-500 to-yellow-600 text-white px-8 py-4 rounded-2xl text-lg hover:from-yellow-600 hover:via-orange-600 hover:to-yellow-700 transition-all duration-300 inline-flex items-center shadow-xl hover:shadow-2xl font-semibold transform hover:scale-105 hover:-rotate-1 border border-yellow-400/30 relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
               <span className="relative z-10">🔑 Fazer Login</span>

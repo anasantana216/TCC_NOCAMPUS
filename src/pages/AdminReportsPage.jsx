@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FileText, Download, Filter, Calendar, BarChart3, Users, TrendingUp, Eye, PieChart, Activity } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import LogoutButton from '../components/LogoutButton';
 import AdminBreadcrumb from '../components/AdminBreadcrumb';
 

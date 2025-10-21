@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BarChart3, Users, Calendar, TrendingUp, Settings, Plus, FileText, Eye } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { eventsAPI, pollsAPI } from '../services/api';
 import LogoutButton from '../components/LogoutButton';
 
@@ -78,12 +79,12 @@ const AdminDashboard = () => {
               <span className="bg-gradient-to-r from-blue-900 to-purple-800 bg-clip-text text-transparent font-semibold">Dashboard Administrativo</span>
             </div>
             <div className="flex items-center space-x-2">
-              <a href="/admin/events" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Eventos</a>
-              <a href="/admin/polls" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-600 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Enquetes</a>
-              <a href="/admin/notices" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-slate-600 hover:to-blue-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Avisos</a>
-              <a href="/admin/users" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-slate-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Usuários</a>
-              <a href="/admin/reports" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-slate-600 hover:to-slate-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Relatórios</a>
-              <a href="/admin/settings" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-blue-700 hover:to-slate-800 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Config</a>
+              <Link to="/admin/events" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Eventos</Link>
+              <Link to="/admin/polls" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-600 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Enquetes</Link>
+              <Link to="/admin/notices" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-slate-600 hover:to-blue-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Avisos</Link>
+              <Link to="/admin/users" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-slate-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Usuários</Link>
+              <Link to="/admin/reports" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-slate-600 hover:to-slate-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Relatórios</Link>
+              <Link to="/admin/settings" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-blue-700 hover:to-slate-800 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Config</Link>
               <LogoutButton variant="default" size="medium" showIcon={false} />
             </div>
           </div>
@@ -218,9 +219,9 @@ const AdminDashboard = () => {
           <div className="bg-white rounded-2xl shadow-lg p-6 border-t-4 border-blue-500">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-bold text-blue-900">📅 Eventos Recentes</h2>
-              <button className="text-blue-600 hover:text-blue-700 font-semibold text-sm flex items-center">
+              <Link to="/admin/events" className="text-blue-600 hover:text-blue-700 font-semibold text-sm flex items-center">
                 Ver todos <Eye className="w-4 h-4 ml-1" />
-              </button>
+              </Link>
             </div>
             <div className="space-y-3">
               {events.slice(0, 3).map((event) => (
@@ -244,9 +245,9 @@ const AdminDashboard = () => {
           <div className="bg-white rounded-2xl shadow-lg p-6 border-t-4 border-slate-500">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-bold text-blue-900">📊 Enquetes Recentes</h2>
-              <button className="text-slate-600 hover:text-slate-700 font-semibold text-sm flex items-center">
+              <Link to="/admin/polls" className="text-slate-600 hover:text-slate-700 font-semibold text-sm flex items-center">
                 Ver todas <Eye className="w-4 h-4 ml-1" />
-              </button>
+              </Link>
             </div>
             <div className="space-y-3">
               {polls.slice(0, 3).map((poll) => (

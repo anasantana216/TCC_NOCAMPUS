@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BarChart3, Plus, Edit3, Trash2, Eye, EyeOff, Save, X, AlertCircle, Users, Calendar } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { pollsAPI } from '../services/api';
 import LogoutButton from '../components/LogoutButton';
 import AdminBreadcrumb from '../components/AdminBreadcrumb';

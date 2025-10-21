@@ -12,10 +12,11 @@ const Layout = ({ children }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50/20 via-white to-orange-50 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-orange-50/30 via-amber-50 to-yellow-100 relative overflow-hidden">
       {/* Background decorative elements */}
-      <div className="absolute top-10 right-20 w-40 h-40 bg-gradient-to-br from-yellow-300/15 to-orange-300/15 rounded-full blur-2xl"></div>
-      <div className="absolute bottom-10 left-20 w-32 h-32 bg-gradient-to-br from-blue-300/15 to-purple-300/15 rounded-full blur-xl"></div>
+      <div className="absolute top-10 right-20 w-40 h-40 bg-gradient-to-br from-yellow-300/25 to-orange-300/25 rounded-full blur-2xl"></div>
+      <div className="absolute bottom-10 left-20 w-32 h-32 bg-gradient-to-br from-orange-300/20 to-yellow-300/20 rounded-full blur-xl"></div>
+      <div className="absolute top-1/3 left-1/4 w-28 h-28 bg-gradient-to-br from-amber-200/15 to-orange-200/15 rounded-full blur-xl"></div>
       
       {/* Header */}
       <header className="bg-gradient-to-r from-white via-blue-50/30 to-white shadow-2xl border-b-4 border-gradient-to-r from-blue-900 to-indigo-900 relative z-10 backdrop-blur-sm">
@@ -56,7 +57,7 @@ const Layout = ({ children }) => {
               {/* Login Button */}
               <Link
                 to="/login"
-                className="flex items-center px-6 py-3 bg-gradient-to-r from-orange-500 via-yellow-500 to-orange-600 text-white rounded-2xl text-sm font-bold hover:from-orange-600 hover:via-yellow-400 hover:to-orange-700 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 border border-orange-400/30 relative overflow-hidden group"
+                className="flex items-center px-6 py-3 bg-gradient-to-r from-yellow-500 via-orange-500 to-yellow-600 text-white rounded-2xl text-sm font-bold hover:from-yellow-600 hover:via-orange-600 hover:to-yellow-700 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 border border-yellow-400/30 relative overflow-hidden group"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <LogIn className="w-5 h-5 mr-2 relative z-10 group-hover:scale-110 transition-transform duration-300" />
