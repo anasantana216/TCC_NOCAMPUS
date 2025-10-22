@@ -15,7 +15,7 @@ const HomePage = () => {
         
         <div className="bg-gradient-to-br from-white to-orange-50/50 rounded-3xl shadow-2xl p-12 max-w-4xl mx-auto border border-orange-200/30 backdrop-blur-sm relative">
           
-          <h1 className="text-6xl font-bold bg-gradient-to-r from-blue-900 via-yellow-600 to-orange-700 bg-clip-text text-transparent mb-6">
+          <h1 className="text-6xl font-bold text-blue-800 mb-6">
             🎓 Bem-vindo ao <span className="bg-gradient-to-r from-blue-900 to-indigo-800 bg-clip-text text-transparent">No</span><span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">Campus</span>
           </h1>
           <p className="text-xl text-blue-700 mb-6 max-w-3xl mx-auto leading-relaxed">

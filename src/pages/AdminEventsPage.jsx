@@ -140,10 +140,10 @@ const AdminEventsPage = () => {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <a href="/admin/dashboard" className="text-2xl font-bold group">
+              <Link to="/admin/dashboard" className="text-2xl font-bold group">
                 <span className="bg-gradient-to-r from-blue-900 to-indigo-800 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300 inline-block">No</span>
                 <span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300 inline-block">Campus</span>
-              </a>
+              </Link>
               <span className="text-gray-300">|</span>
               <span className="bg-gradient-to-r from-blue-900 to-purple-800 bg-clip-text text-transparent font-semibold">Gerenciar Eventos</span>
             </div>
@@ -151,10 +151,11 @@ const AdminEventsPage = () => {
               <a href="/admin/dashboard" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-slate-600 hover:to-blue-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Dashboard</a>
               <a href="/admin/events" className="text-white bg-gradient-to-r from-blue-600 to-blue-700 font-medium px-3 py-2 rounded-lg shadow-md text-sm">Eventos</a>
               <a href="/admin/polls" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-600 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Enquetes</a>
-              <a href="/admin/notices" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-slate-600 hover:to-blue-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Avisos</a>
-              <a href="/admin/users" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-slate-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Usuários</a>
-              <a href="/admin/reports" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-slate-600 hover:to-slate-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Relatórios</a>
-              <a href="/admin/settings" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-blue-700 hover:to-slate-800 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Config</a>
+              <Link to="/admin/polls" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-600 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Enquetes</Link>
+              <Link to="/admin/notices" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-slate-600 hover:to-blue-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Avisos</Link>
+              <Link to="/admin/users" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-slate-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Usuários</Link>
+              <Link to="/admin/reports" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-slate-600 hover:to-slate-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Relatórios</Link>
+              <Link to="/admin/settings" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-blue-700 hover:to-slate-800 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Config</Link>
               <LogoutButton variant="default" size="medium" showIcon={false} />
             </div>
           </div>
@@ -191,7 +192,7 @@ const AdminEventsPage = () => {
         </div>
 
         {/* Create/Edit Form */}
-        {showCreateForm && (
+        {(showCreateForm || editingEvent) && (
           <div className="bg-gradient-to-br from-white to-blue-50/50 rounded-3xl shadow-2xl p-8 mb-8 border border-blue-200/30 backdrop-blur-sm">
             <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-900 to-purple-800 bg-clip-text text-transparent mb-6">
               {editingEvent ? '✏️ Editar Evento' : '➕ Criar Novo Evento'}

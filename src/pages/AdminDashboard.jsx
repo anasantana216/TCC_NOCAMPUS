@@ -71,10 +71,10 @@ const AdminDashboard = () => {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <a href="/" className="text-2xl font-bold group">
+              <Link to="/" className="text-2xl font-bold group">
                 <span className="bg-gradient-to-r from-blue-900 to-indigo-800 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300 inline-block">No</span>
                 <span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300 inline-block">Campus</span>
-              </a>
+              </Link>
               <span className="text-gray-300">|</span>
               <span className="bg-gradient-to-r from-blue-900 to-purple-800 bg-clip-text text-transparent font-semibold">Dashboard Administrativo</span>
             </div>
@@ -162,22 +162,22 @@ const AdminDashboard = () => {
               ⚡ Ações Rápidas
             </h2>
             <div className="grid grid-cols-2 gap-4">
-              <a href="/admin/events" className="flex flex-col items-center p-4 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl hover:from-blue-200 hover:to-blue-300 transition-all shadow-md hover:shadow-lg">
+              <Link to="/admin/events" className="flex flex-col items-center p-4 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl hover:from-blue-200 hover:to-blue-300 transition-all shadow-md hover:shadow-lg">
                 <Plus className="w-8 h-8 text-blue-900 mb-2" />
                 <span className="text-sm font-bold text-blue-900">Criar Evento</span>
-              </a>
-              <a href="/admin/polls" className="flex flex-col items-center p-4 bg-gradient-to-br from-blue-100 to-slate-200 rounded-xl hover:from-blue-200 hover:to-slate-300 transition-all shadow-md hover:shadow-lg">
+              </Link>
+              <Link to="/admin/polls" className="flex flex-col items-center p-4 bg-gradient-to-br from-blue-100 to-slate-200 rounded-xl hover:from-blue-200 hover:to-slate-300 transition-all shadow-md hover:shadow-lg">
                 <BarChart3 className="w-8 h-8 text-blue-700 mb-2" />
                 <span className="text-sm font-bold text-blue-700">Nova Enquete</span>
-              </a>
-              <a href="/admin/reports" className="flex flex-col items-center p-4 bg-gradient-to-br from-slate-100 to-blue-200 rounded-xl hover:from-slate-200 hover:to-blue-300 transition-all shadow-md hover:shadow-lg">
+              </Link>
+              <Link to="/admin/reports" className="flex flex-col items-center p-4 bg-gradient-to-br from-slate-100 to-blue-200 rounded-xl hover:from-slate-200 hover:to-blue-300 transition-all shadow-md hover:shadow-lg">
                 <FileText className="w-8 h-8 text-slate-700 mb-2" />
                 <span className="text-sm font-bold text-slate-700">Relatórios</span>
-              </a>
-              <a href="/admin/settings" className="flex flex-col items-center p-4 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl hover:from-blue-200 hover:to-blue-300 transition-all shadow-md hover:shadow-lg">
+              </Link>
+              <Link to="/admin/settings" className="flex flex-col items-center p-4 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl hover:from-blue-200 hover:to-blue-300 transition-all shadow-md hover:shadow-lg">
                 <Settings className="w-8 h-8 text-blue-700 mb-2" />
                 <span className="text-sm font-bold text-blue-700">Configurações</span>
-              </a>
+              </Link>
             </div>
           </div>
 

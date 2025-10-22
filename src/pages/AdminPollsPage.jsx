@@ -168,17 +168,17 @@ const AdminPollsPage = () => {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <a href="/admin/dashboard" className="text-2xl font-bold group">
+              <Link to="/admin/dashboard" className="text-2xl font-bold group">
                 <span className="bg-gradient-to-r from-blue-900 to-indigo-800 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300 inline-block">No</span>
                 <span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300 inline-block">Campus</span>
-              </a>
+              </Link>
               <span className="text-gray-300">|</span>
               <span className="bg-gradient-to-r from-blue-900 to-purple-800 bg-clip-text text-transparent font-semibold">Gerenciar Enquetes</span>
             </div>
             <div className="flex items-center space-x-2">
-              <a href="/admin/dashboard" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-slate-600 hover:to-blue-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Dashboard</a>
-              <a href="/admin/events" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Eventos</a>
-              <a href="/admin/polls" className="text-white bg-gradient-to-r from-blue-600 to-blue-700 font-medium px-3 py-2 rounded-lg shadow-md text-sm">Enquetes</a>
+              <Link to="/admin/dashboard" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-slate-600 hover:to-blue-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Dashboard</Link>
+              <Link to="/admin/events" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Eventos</Link>
+              <span className="text-white bg-gradient-to-r from-blue-600 to-blue-700 font-medium px-3 py-2 rounded-lg shadow-md text-sm">Enquetes</span>
               <LogoutButton variant="default" size="medium" showIcon={false} />
             </div>
           </div>
