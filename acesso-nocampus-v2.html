@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso NoCampus - Portal Administrativo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .logo {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        h1 { 
+            color: #333; 
+            margin-bottom: 10px;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .status {
+            margin: 25px 0;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .online { 
+            background: linear-gradient(135deg, #d4edda, #c3e6cb); 
+            color: #155724; 
+            border: 2px solid #b8dacc;
+        }
+        
+        .offline { 
+            background: linear-gradient(135deg, #f8d7da, #f1b9bc); 
+            color: #721c24; 
+            border: 2px solid #e2a6aa;
+        }
+        
+        .loading { 
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7); 
+            color: #856404; 
+            border: 2px solid #f0d43a;
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        .access-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .access-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 18px 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .access-btn:hover { 
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(135deg, #5a67d8, #6b46c1);
+        }
+        
+        .instructions {
+            margin-top: 30px;
+            padding: 25px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+            text-align: left;
+        }
+        
+        .instructions h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .instructions ol {
+            margin-left: 20px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .instructions li {
+            margin-bottom: 8px;
+        }
+        
+        code {
+            background: rgba(0,0,0,0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        .backup-link {
+            margin-top: 15px;
+            padding: 10px 15px;
+            background: rgba(255, 193, 7, 0.2);
+            border-radius: 8px;
+            border: 1px solid #ffc107;
+        }
+        
+        .backup-link a {
+            color: #856404;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .backup-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🎓</div>
+        <h1>Sistema NoCampus</h1>
+        <p class="subtitle">Portal Administrativo Educacional</p>
+        
+        <div id="status" class="status loading pulse">
+            <span>🔄</span>
+            <span>Verificando conexão do servidor...</span>
+        </div>
+        
+        <div class="access-grid">
+            <a href="http://localhost:3000/" class="access-btn" target="_blank">
+                <span>🏠</span>
+                <span>Página Inicial</span>
+            </a>
+            <a href="http://localhost:3000/admin/dashboard" class="access-btn" target="_blank">
+                <span>👨‍💼</span>
+                <span>Admin Dashboard</span>
+            </a>
+            <a href="http://localhost:3000/login" class="access-btn" target="_blank">
+                <span>🔐</span>
+                <span>Sistema Login</span>
+            </a>
+        </div>
+        
+        <div class="instructions">
+            <h3>📋 Instruções de Acesso</h3>
+            <ol>
+                <li>Execute o arquivo <code>start-server.bat</code></li>
+                <li>Aguarde alguns segundos para o servidor inicializar</li>
+                <li>Clique nos botões de acesso acima</li>
+                <li>O sistema estará disponível na porta 3000</li>
+            </ol>
+            
+            <div class="backup-link">
+                <strong>⚠️ Porta alternativa:</strong><br>
+                Se não funcionar, tente acessar pela 
+                <a href="http://localhost:5173/" target="_blank">porta 5173</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function checkServer() {
+            const statusDiv = document.getElementById('status');
+            
+            try {
+                // Tentar porta 3000 primeiro
+                const response = await fetch('http://localhost:3000/', { 
+                    mode: 'no-cors',
+                    signal: AbortSignal.timeout(3000)
+                });
+                
+                statusDiv.innerHTML = `
+                    <span>✅</span>
+                    <span>Servidor online - Porta 3000</span>
+                `;
+                statusDiv.className = 'status online';
+                
+                // Garantir que os links estão na porta 3000
+                document.querySelectorAll('.access-btn').forEach(btn => {
+                    btn.href = btn.href.replace('5173', '3000');
+                });
+                
+            } catch (error) {
+                try {
+                    // Tentar porta 5173 como backup
+                    const response2 = await fetch('http://localhost:5173/', { 
+                        mode: 'no-cors',
+                        signal: AbortSignal.timeout(3000)
+                    });
+                    
+                    statusDiv.innerHTML = `
+                        <span>✅</span>
+                        <span>Servidor online - Porta 5173</span>
+                    `;
+                    statusDiv.className = 'status online';
+                    
+                    // Atualizar links para porta 5173
+                    document.querySelectorAll('.access-btn').forEach(btn => {
+                        btn.href = btn.href.replace('3000', '5173');
+                    });
+                    
+                } catch (error2) {
+                    statusDiv.innerHTML = `
+                        <span>❌</span>
+                        <span>Servidor offline - Execute o start-server.bat</span>
+                    `;
+                    statusDiv.className = 'status offline';
+                    statusDiv.classList.remove('pulse');
+                }
+            }
+        }
+
+        // Verificar imediatamente e depois a cada 5 segundos
+        checkServer();
+        setInterval(checkServer, 5000);
+        
+        // Adicionar eventos de clique para feedback
+        document.querySelectorAll('.access-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>

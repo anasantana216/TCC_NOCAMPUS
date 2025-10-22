@@ -1,0 +1,50 @@
+🚀 COMMIT RÁPIDO - NOCAMPUS
+========================
+
+⚡ INSTALAÇÃO RÁPIDA DO GIT (2 minutos):
+https://git-scm.com/download/windows
+Ou use GitHub Desktop: https://desktop.github.com/
+
+📋 COMANDOS PARA COMMIT RÁPIDO:
+===============================
+
+git add .
+
+git commit -m "feat: AdminDashboard completo + sistema notificações + correções z-index
+
+✨ Principais melhorias:
+- AdminDashboard com 8 cards estatísticos dinâmicos
+- Sistema de notificações interativas (z-index corrigido)
+- Funcionalidades de exportação e monitoramento
+- Portal de acesso profissional
+- Correções visuais em todas as páginas admin
+- Scripts de servidor otimizados (porta 3000)
+
+🐛 Bugs corrigidos:
+- Notificações aparecendo atrás de elementos
+- Modais com z-index incorreto
+- Conflitos de porta do servidor
+
+🎯 Ready for production!"
+
+git push origin main
+
+===============================
+🌐 VERCEL DEPLOY: AUTOMÁTICO após push
+⏱️ Tempo estimado: 2-3 minutos
+===============================
+
+💡 ALTERNATIVA RÁPIDA: GitHub Web
+1. Vá para: https://github.com/anasantana216/TCC_NOCAMPUS
+2. Clique "Upload files"  
+3. Arraste os arquivos modificados
+4. Commit message: "AdminDashboard completo + correções"
+5. Commit changes
+
+📁 ARQUIVOS PRINCIPAIS MODIFICADOS:
+- src/pages/AdminDashboard.jsx (⭐ PRINCIPAL)
+- src/pages/StudentDashboard.jsx
+- src/pages/GuardianDashboard.jsx  
+- src/pages/AdminUsersPage.jsx
+- start-server.bat
+- acesso-nocampus-v2.html

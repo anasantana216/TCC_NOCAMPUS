@@ -448,7 +448,7 @@ const GuardianDashboard = () => {
 
       {/* Notifications Modal */}
       {showNotifications && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[99999] p-4">
           <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-hidden">
             <div className="bg-green-600 text-white p-6">
               <div className="flex items-center justify-between">
@@ -515,7 +515,7 @@ const GuardianDashboard = () => {
 
       {/* Contact Form Modal */}
       {showContactForm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[99999] p-4">
           <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full">
             <div className="bg-emerald-600 text-white p-6">
               <div className="flex items-center justify-between">
@@ -607,7 +607,7 @@ const GuardianDashboard = () => {
 
       {/* Events Modal */}
       {showEvents && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[99999] p-4">
           <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[80vh] overflow-hidden">
             <div className="bg-green-600 text-white p-6">
               <div className="flex items-center justify-between">
@@ -661,7 +661,7 @@ const GuardianDashboard = () => {
 
       {/* Financial Modal */}
       {showFinancial && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[99999] p-4">
           <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full">
             <div className="bg-emerald-700 text-white p-6">
               <div className="flex items-center justify-between">
@@ -727,7 +727,7 @@ const GuardianDashboard = () => {
 
       {/* Academic Reports Modal */}
       {showReports && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[99999] p-4">
           <div className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[80vh] overflow-hidden">
             <div className="bg-green-700 text-white p-6">
               <div className="flex items-center justify-between">
@@ -784,7 +784,7 @@ const GuardianDashboard = () => {
 
       {/* Schedule Modal */}
       {showSchedule && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[99999] p-4">
           <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[80vh] overflow-hidden">
             <div className="bg-emerald-600 text-white p-6">
               <div className="flex items-center justify-between">

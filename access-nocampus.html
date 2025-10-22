@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoCampus - Redirecionamento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .logo .no { color: #4299e1; }
+        .logo .campus { color: #f6ad55; }
+        .links {
+            margin-top: 2rem;
+        }
+        .link {
+            display: inline-block;
+            margin: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        .instructions {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <span class="no">No</span><span class="campus">Campus</span>
+        </div>
+        
+        <h2>Acesso ao Sistema</h2>
+        
+        <div class="links">
+            <a href="http://localhost:5173/" class="link">🏠 Página Principal</a>
+            <a href="http://localhost:5173/admin/dashboard" class="link">👨‍💼 Admin Dashboard</a>
+            <a href="http://localhost:5173/student/dashboard" class="link">👨‍🎓 Dashboard Estudante</a>
+            <a href="http://localhost:5173/guardian/dashboard" class="link">👨‍👩‍👧‍👦 Dashboard Responsável</a>
+        </div>
+        
+        <div class="instructions">
+            <p><strong>Instruções:</strong></p>
+            <p>1. Certifique-se de que o servidor está rodando (npm run dev)</p>
+            <p>2. Clique nos links acima para acessar as diferentes páginas</p>
+            <p>3. Se houver problemas, reinicie o servidor</p>
+        </div>
+        
+        <script>
+            // Verificar se o servidor está rodando
+            fetch('http://localhost:5173/')
+                .then(() => {
+                    document.querySelector('.instructions').innerHTML += '<p style="color: #48bb78;">✅ Servidor está online!</p>';
+                })
+                .catch(() => {
+                    document.querySelector('.instructions').innerHTML += '<p style="color: #f56565;">❌ Servidor offline. Execute: npm run dev</p>';
+                });
+        </script>
+    </div>
+</body>
+</html>

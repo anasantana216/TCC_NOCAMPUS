@@ -587,7 +587,7 @@ const StudentDashboard = () => {
 
         {/* Notifications Panel */}
         {showNotifications && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <div className="fixed inset-0 bg-black bg-opacity-50 z-[99999] flex items-center justify-center p-4">
             <div className="bg-white rounded-2xl shadow-lg max-w-md w-full max-h-96 overflow-hidden">
               <div className="bg-gradient-to-r from-blue-900 to-indigo-900 text-white p-4 flex items-center justify-between">
                 <h3 className="text-lg font-bold flex items-center">
