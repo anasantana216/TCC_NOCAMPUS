@@ -207,14 +207,14 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/40 to-blue-100/20 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/40 to-blue-100/20 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 relative overflow-hidden transition-colors duration-300">
       {/* Subtle Background decorative elements - maintaining original style */}
-      <div className="absolute top-10 right-10 w-64 h-64 bg-gradient-to-br from-blue-200/10 to-blue-300/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-20 left-10 w-48 h-48 bg-gradient-to-br from-blue-300/10 to-blue-100/10 rounded-full blur-2xl animate-pulse delay-1000"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-blue-200/8 to-blue-300/8 rounded-full blur-3xl animate-pulse delay-2000"></div>
+      <div className="absolute top-10 right-10 w-64 h-64 bg-gradient-to-br from-blue-200/10 to-blue-300/10 dark:from-blue-500/5 dark:to-blue-400/5 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-20 left-10 w-48 h-48 bg-gradient-to-br from-blue-300/10 to-blue-100/10 dark:from-blue-400/5 dark:to-blue-600/5 rounded-full blur-2xl animate-pulse delay-1000"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-blue-200/8 to-blue-300/8 dark:from-blue-600/3 dark:to-blue-500/3 rounded-full blur-3xl animate-pulse delay-2000"></div>
       
       {/* Top Navigation */}
-      <div className="bg-gradient-to-r from-white via-blue-50/30 to-white shadow-2xl border-b-4 border-gradient-to-r from-blue-900 to-blue-800 relative z-40 backdrop-blur-sm">
+      <div className="bg-gradient-to-r from-white via-blue-50/30 to-white dark:from-slate-800 dark:via-slate-700/30 dark:to-slate-800 shadow-2xl border-b-4 border-gradient-to-r from-blue-900 to-blue-800 dark:border-slate-600 relative z-40 backdrop-blur-sm transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
@@ -222,13 +222,13 @@ const AdminDashboard = () => {
                 <span className="bg-gradient-to-r from-blue-900 to-indigo-800 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300 inline-block">No</span>
                 <span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300 inline-block">Campus</span>
               </Link>
-              <span className="text-gray-300">|</span>
-              <span className="bg-gradient-to-r from-blue-900 to-purple-800 bg-clip-text text-transparent font-semibold">Dashboard Administrativo</span>
+              <span className="text-gray-300 dark:text-slate-500">|</span>
+              <span className="bg-gradient-to-r from-blue-900 to-purple-800 dark:from-slate-200 dark:to-slate-100 bg-clip-text text-transparent font-semibold">Dashboard Administrativo</span>
             </div>
             <div className="flex items-center space-x-2 relative">
               <button 
                 onClick={() => setShowNotifications(!showNotifications)}
-                className="relative p-2 text-blue-900 hover:bg-blue-100 rounded-lg transition-colors z-50"
+                className="relative p-2 text-blue-900 dark:text-slate-200 hover:bg-blue-100 dark:hover:bg-slate-600 rounded-lg transition-colors z-50"
               >
                 <Bell className="w-5 h-5" />
                 {notifications.filter(n => !n.read).length > 0 && (
@@ -237,12 +237,13 @@ const AdminDashboard = () => {
                   </span>
                 )}
               </button>
-              <Link to="/admin/events" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Eventos</Link>
-              <Link to="/admin/polls" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-600 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Enquetes</Link>
-              <Link to="/admin/notices" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-slate-600 hover:to-blue-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Avisos</Link>
-              <Link to="/admin/users" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-slate-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Usuários</Link>
-              <Link to="/admin/reports" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-slate-600 hover:to-slate-700 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Relatórios</Link>
-              <Link to="/admin/settings" className="text-blue-900 hover:text-white bg-white hover:bg-gradient-to-r hover:from-blue-700 hover:to-slate-800 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Config</Link>
+              <Link to="/admin/events" className="text-blue-900 dark:text-slate-200 hover:text-white bg-white dark:bg-slate-700 hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-700 dark:hover:from-slate-600 dark:hover:to-slate-500 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Eventos</Link>
+              <Link to="/admin/polls" className="text-blue-900 dark:text-slate-200 hover:text-white bg-white dark:bg-slate-700 hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-600 dark:hover:from-slate-600 dark:hover:to-slate-500 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Enquetes</Link>
+              <Link to="/admin/notices" className="text-blue-900 dark:text-slate-200 hover:text-white bg-white dark:bg-slate-700 hover:bg-gradient-to-r hover:from-slate-600 hover:to-blue-700 dark:hover:from-slate-600 dark:hover:to-slate-500 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Avisos</Link>
+              <Link to="/admin/users" className="text-blue-900 dark:text-slate-200 hover:text-white bg-white dark:bg-slate-700 hover:bg-gradient-to-r hover:from-blue-600 hover:to-slate-700 dark:hover:from-slate-600 dark:hover:to-slate-500 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Usuários</Link>
+              <Link to="/admin/reports" className="text-blue-900 dark:text-slate-200 hover:text-white bg-white dark:bg-slate-700 hover:bg-gradient-to-r hover:from-slate-600 hover:to-slate-700 dark:hover:from-slate-600 dark:hover:to-slate-500 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Relatórios</Link>
+              <Link to="/admin/settings" className="text-blue-900 dark:text-slate-200 hover:text-white bg-white dark:bg-slate-700 hover:bg-gradient-to-r hover:from-blue-700 hover:to-slate-800 dark:hover:from-slate-600 dark:hover:to-slate-500 transition-all duration-300 font-medium px-3 py-2 rounded-lg shadow-md hover:shadow-lg text-sm">Config</Link>
+              <ThemeToggle variant="compact" className="mr-2" />
               <LogoutButton variant="default" size="medium" showIcon={false} />
             </div>
           </div>

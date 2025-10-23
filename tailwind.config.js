@@ -23,6 +23,22 @@ module.exports = {
           DEFAULT: '#f59e0b',
           light: '#fbbf24',
           dark: '#d97706'
+        },
+        dark: {
+          bg: {
+            primary: '#0f172a',
+            secondary: '#1e293b',
+            tertiary: '#334155'
+          },
+          text: {
+            primary: '#f8fafc',
+            secondary: '#e2e8f0',
+            muted: '#94a3b8'
+          },
+          border: {
+            primary: '#475569',
+            secondary: '#64748b'
+          }
         }
       }
     }

@@ -194,22 +194,22 @@ const StudentDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-yellow-50 dark:bg-gray-900 relative overflow-hidden transition-colors duration-300">
+    <div className="min-h-screen bg-yellow-50 dark:bg-slate-900 relative overflow-hidden transition-colors duration-300">
       {/* Background decorative elements */}
-      <div className="absolute top-20 right-20 w-64 h-64 bg-yellow-200/20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 left-20 w-48 h-48 bg-orange-200/20 rounded-full blur-2xl"></div>
+      <div className="absolute top-20 right-20 w-64 h-64 bg-yellow-200/20 dark:bg-amber-500/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 left-20 w-48 h-48 bg-orange-200/20 dark:bg-orange-400/10 rounded-full blur-2xl"></div>
       <div className="absolute top-1/2 right-10 w-32 h-32 bg-amber-200/15 rounded-full blur-xl"></div>
       
       {/* Top Navigation */}
-      <div className="bg-white shadow-lg border-b-4 border-blue-900 relative z-10">
+      <div className="bg-white dark:bg-slate-800 shadow-lg border-b-4 border-blue-900 dark:border-slate-600 relative z-10 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <a href="/" className="text-2xl font-bold">
                 <span className="text-blue-900">No</span><span className="text-yellow-500">Campus</span>
               </a>
-              <span className="text-gray-300">|</span>
-              <span className="text-blue-900 font-medium">Dashboard do Estudante</span>
+              <span className="text-gray-300 dark:text-slate-500">|</span>
+              <span className="text-blue-900 dark:text-slate-100 font-medium">Dashboard do Estudante</span>
             </div>
             <div className="flex items-center space-x-3">
               <Link 
@@ -237,60 +237,60 @@ const StudentDashboard = () => {
         
         {/* Header */}
         <div className="mb-8 text-center relative z-10">
-          <h1 className="text-5xl font-bold text-blue-900 mb-4">
+          <h1 className="text-5xl font-bold text-blue-900 dark:text-slate-100 mb-4 transition-colors duration-300">
             Bem-vindo de volta! 🎓
           </h1>
-          <p className="text-blue-700 text-xl font-medium">
+          <p className="text-blue-700 dark:text-slate-300 text-xl font-medium transition-colors duration-300">
             Acompanhe suas atividades acadêmicas no UNASP Engenheiro Coelho
           </p>
         </div>
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8 relative z-10">
-          <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-md p-6 border border-blue-200 hover:shadow-lg transition-all duration-300 transform hover:scale-105 group">
+          <div className="bg-gradient-to-br from-white to-blue-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl shadow-md p-6 border border-blue-200 dark:border-slate-600 hover:shadow-lg transition-all duration-300 transform hover:scale-105 group">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-blue-700 text-sm font-medium">Eventos Este Mês</p>
-                <p className="text-4xl font-bold text-blue-900">{events.length}</p>
+                <p className="text-blue-700 dark:text-slate-300 text-sm font-medium">Eventos Este Mês</p>
+                <p className="text-4xl font-bold text-blue-900 dark:text-slate-100">{events.length}</p>
               </div>
-              <div className="bg-gradient-to-br from-blue-100 to-blue-200 p-4 rounded-xl">
-                <Calendar className="w-10 h-10 text-blue-900" />
+              <div className="bg-gradient-to-br from-blue-100 to-blue-200 dark:from-slate-600 dark:to-slate-500 p-4 rounded-xl">
+                <Calendar className="w-10 h-10 text-blue-900 dark:text-slate-200" />
               </div>
             </div>
           </div>
           
-          <div className="bg-gradient-to-br from-white to-orange-50 rounded-2xl shadow-md p-6 border border-orange-200 hover:shadow-lg transition-all duration-300 transform hover:scale-105 group">
+          <div className="bg-gradient-to-br from-white to-orange-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl shadow-md p-6 border border-orange-200 dark:border-slate-600 hover:shadow-lg transition-all duration-300 transform hover:scale-105 group">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-orange-700 text-sm font-medium">Enquetes Ativas</p>
-                <p className="text-4xl font-bold text-orange-600">{polls.length}</p>
+                <p className="text-orange-700 dark:text-slate-300 text-sm font-medium">Enquetes Ativas</p>
+                <p className="text-4xl font-bold text-orange-600 dark:text-slate-100">{polls.length}</p>
               </div>
-              <div className="bg-gradient-to-br from-orange-100 to-orange-200 p-4 rounded-xl">
-                <TrendingUp className="w-10 h-10 text-orange-600" />
+              <div className="bg-gradient-to-br from-orange-100 to-orange-200 dark:from-orange-600/20 dark:to-orange-500/20 p-4 rounded-xl">
+                <TrendingUp className="w-10 h-10 text-orange-600 dark:text-orange-400" />
               </div>
             </div>
           </div>
           
-          <div className="bg-gradient-to-br from-white to-yellow-50 rounded-2xl shadow-md p-6 border border-yellow-200 hover:shadow-lg transition-all duration-300 transform hover:scale-105 group">
+          <div className="bg-gradient-to-br from-white to-yellow-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl shadow-md p-6 border border-yellow-200 dark:border-slate-600 hover:shadow-lg transition-all duration-300 transform hover:scale-105 group">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-yellow-700 text-sm font-medium">Próximos Eventos</p>
-                <p className="text-4xl font-bold text-yellow-600">{upcomingEvents.length}</p>
+                <p className="text-yellow-700 dark:text-slate-300 text-sm font-medium">Próximos Eventos</p>
+                <p className="text-4xl font-bold text-yellow-600 dark:text-slate-100">{upcomingEvents.length}</p>
               </div>
-              <div className="bg-gradient-to-br from-yellow-100 to-yellow-200 p-4 rounded-xl">
-                <Clock className="w-10 h-10 text-yellow-700" />
+              <div className="bg-gradient-to-br from-yellow-100 to-yellow-200 dark:from-amber-600/20 dark:to-amber-500/20 p-4 rounded-xl">
+                <Clock className="w-10 h-10 text-yellow-700 dark:text-amber-400" />
               </div>
             </div>
           </div>
           
-          <div className="bg-gradient-to-br from-white to-indigo-50 rounded-2xl shadow-md p-6 border border-indigo-200 hover:shadow-lg transition-all duration-300 transform hover:scale-105 group">
+          <div className="bg-gradient-to-br from-white to-indigo-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl shadow-md p-6 border border-indigo-200 dark:border-slate-600 hover:shadow-lg transition-all duration-300 transform hover:scale-105 group">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-indigo-700 text-sm font-medium">Minhas Votações</p>
-                <p className="text-4xl font-bold text-indigo-600">{votedPolls.size}</p>
+                <p className="text-indigo-700 dark:text-slate-300 text-sm font-medium">Minhas Votações</p>
+                <p className="text-4xl font-bold text-indigo-600 dark:text-slate-100">{votedPolls.size}</p>
               </div>
-              <div className="bg-gradient-to-br from-indigo-100 to-indigo-200 p-4 rounded-xl">
-                <Users className="w-8 h-8 text-indigo-700" />
+              <div className="bg-gradient-to-br from-indigo-100 to-indigo-200 dark:from-indigo-600/20 dark:to-indigo-500/20 p-4 rounded-xl">
+                <Users className="w-8 h-8 text-indigo-700 dark:text-indigo-400" />
               </div>
             </div>
           </div>

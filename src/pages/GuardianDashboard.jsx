@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, Clock, CheckCircle, AlertCircle, User, BookOpen, MessageCircle, Bell, TrendingUp, Award, FileText, Eye, X } from 'lucide-react';
 import LogoutButton from '../components/LogoutButton';
+import ThemeToggle from '../components/ThemeToggle';
 
 const GuardianDashboard = () => {
   const [showNotifications, setShowNotifications] = useState(false);
@@ -131,7 +132,7 @@ const GuardianDashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50/30 via-white to-green-50 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50/30 via-white to-green-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden transition-colors duration-300">
       {/* Background decorative elements */}
       <div className="absolute top-10 right-10 w-64 h-64 bg-gradient-to-br from-green-200/15 to-emerald-300/15 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-20 left-10 w-48 h-48 bg-gradient-to-br from-emerald-300/15 to-green-100/15 rounded-full blur-2xl animate-pulse delay-1000"></div>
@@ -139,7 +140,7 @@ const GuardianDashboard = () => {
 
       
       {/* Top Navigation */}
-      <div className="bg-gradient-to-r from-white via-green-50/30 to-white shadow-2xl border-b-4 border-gradient-to-r from-green-700 to-green-600 relative z-10 backdrop-blur-sm">
+      <div className="bg-gradient-to-r from-white via-green-50/30 to-white dark:from-slate-800 dark:via-slate-700/30 dark:to-slate-800 shadow-2xl border-b-4 border-gradient-to-r from-green-700 to-green-600 dark:border-slate-600 relative z-10 backdrop-blur-sm transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
@@ -147,21 +148,22 @@ const GuardianDashboard = () => {
                 <span className="bg-gradient-to-r from-green-700 to-green-800 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300 inline-block">No</span>
                 <span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300 inline-block">Campus</span>
               </a>
-              <span className="text-gray-300">|</span>
-              <span className="bg-gradient-to-r from-green-700 to-green-800 bg-clip-text text-transparent font-semibold">Portal do Responsável</span>
+              <span className="text-gray-300 dark:text-slate-500">|</span>
+              <span className="bg-gradient-to-r from-green-700 to-green-800 dark:from-slate-200 dark:to-slate-100 bg-clip-text text-transparent font-semibold">Portal do Responsável</span>
             </div>
             <div className="flex items-center space-x-4">
-              <div className="text-right bg-gradient-to-r from-white to-green-50 px-4 py-2 rounded-xl border border-green-200/50 shadow-md">
-                <p className="text-sm text-gray-600">Responsável por:</p>
-                <p className="font-bold bg-gradient-to-r from-green-700 to-green-800 bg-clip-text text-transparent">{studentInfo.name}</p>
+              <div className="text-right bg-gradient-to-r from-white to-green-50 dark:from-slate-700 dark:to-slate-600 px-4 py-2 rounded-xl border border-green-200/50 dark:border-slate-500/50 shadow-md">
+                <p className="text-sm text-gray-600 dark:text-slate-300">Responsável por:</p>
+                <p className="font-bold bg-gradient-to-r from-green-700 to-green-800 dark:from-green-400 dark:to-green-300 bg-clip-text text-transparent">{studentInfo.name}</p>
               </div>
               <button
                 onClick={() => setShowContactForm(true)}
-                className="bg-gradient-to-r from-green-600 to-green-700 text-white px-4 py-2 rounded-lg font-medium hover:from-green-700 hover:to-green-800 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center"
+                className="bg-gradient-to-r from-green-600 to-green-700 dark:from-green-700 dark:to-green-800 text-white px-4 py-2 rounded-lg font-medium hover:from-green-700 hover:to-green-800 dark:hover:from-green-600 dark:hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center"
               >
                 <MessageCircle className="w-4 h-4 mr-2" />
                 Contato
               </button>
+              <ThemeToggle variant="default" className="mr-3" />
               <LogoutButton variant="default" size="medium" showIcon={false} />
             </div>
           </div>
@@ -172,15 +174,15 @@ const GuardianDashboard = () => {
         
         {/* Financial Alert */}
         {financialData.currentMonth.status === 'pending' && (
-          <div className="mb-6 bg-gradient-to-r from-amber-100 to-orange-100 border-l-4 border-amber-500 rounded-r-xl p-4 shadow-lg">
+          <div className="mb-6 bg-gradient-to-r from-amber-100 to-orange-100 dark:from-amber-900/30 dark:to-orange-900/30 border-l-4 border-amber-500 dark:border-amber-400 rounded-r-xl p-4 shadow-lg">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <div className="bg-amber-500 text-white rounded-full p-2">
                   💰
                 </div>
                 <div>
-                  <h3 className="font-semibold text-amber-800">Mensalidade Pendente</h3>
-                  <p className="text-sm text-amber-700">
+                  <h3 className="font-semibold text-amber-800 dark:text-amber-200">Mensalidade Pendente</h3>
+                  <p className="text-sm text-amber-700 dark:text-amber-300">
                     Valor: <strong>{financialData.currentMonth.amount}</strong> | 
                     Vencimento: <strong>{financialData.currentMonth.dueDate}</strong>
                   </p>
@@ -188,7 +190,7 @@ const GuardianDashboard = () => {
               </div>
               <button 
                 onClick={() => setShowFinancial(true)}
-                className="bg-amber-600 text-white px-4 py-2 rounded-lg hover:bg-amber-700 transition-all text-sm font-medium"
+                className="bg-amber-600 dark:bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-700 dark:hover:bg-amber-600 transition-all text-sm font-medium"
               >
                 Ver Detalhes
               </button>
