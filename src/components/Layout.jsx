@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Home, Calendar, BarChart3, Menu, X, LogIn, Info } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -12,14 +13,14 @@ const Layout = ({ children }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-orange-50/30 via-amber-50 to-yellow-100 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-orange-50/30 via-amber-50 to-yellow-100 dark:from-gray-900 dark:via-slate-800 dark:to-gray-900 relative overflow-hidden transition-colors duration-300">
       {/* Background decorative elements */}
       <div className="absolute top-10 right-20 w-40 h-40 bg-gradient-to-br from-yellow-300/25 to-orange-300/25 rounded-full blur-2xl"></div>
       <div className="absolute bottom-10 left-20 w-32 h-32 bg-gradient-to-br from-orange-300/20 to-yellow-300/20 rounded-full blur-xl"></div>
       <div className="absolute top-1/3 left-1/4 w-28 h-28 bg-gradient-to-br from-amber-200/15 to-orange-200/15 rounded-full blur-xl"></div>
       
       {/* Header */}
-      <header className="bg-gradient-to-r from-white via-blue-50/30 to-white shadow-2xl border-b-4 border-gradient-to-r from-blue-900 to-indigo-900 relative z-10 backdrop-blur-sm">
+      <header className="bg-gradient-to-r from-white via-blue-50/30 to-white dark:from-gray-800 dark:via-slate-700 dark:to-gray-800 shadow-2xl border-b-4 border-gradient-to-r from-blue-900 to-indigo-900 dark:border-orange-500 relative z-10 backdrop-blur-sm transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             {/* Logo */}
@@ -53,6 +54,9 @@ const Layout = ({ children }) => {
                   </Link>
                 );
               })}
+              
+              {/* Theme Toggle */}
+              <ThemeToggle variant="compact" />
               
               {/* Login Button */}
               <Link

@@ -3,6 +3,7 @@ import { BarChart3, Users, Calendar, TrendingUp, Settings, Plus, FileText, Eye, 
 import { Link } from 'react-router-dom';
 import { eventsAPI, pollsAPI } from '../services/api';
 import LogoutButton from '../components/LogoutButton';
+import ThemeToggle from '../components/ThemeToggle';
 
 const AdminDashboard = () => {
   const [events, setEvents] = useState([]);

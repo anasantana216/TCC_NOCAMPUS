@@ -3,6 +3,7 @@ import { Calendar, Clock, Users, BookOpen, Bell, TrendingUp, ChevronRight, MapPi
 import { Link } from 'react-router-dom';
 import { eventsAPI, pollsAPI } from '../services/api';
 import LogoutButton from '../components/LogoutButton';
+import ThemeToggle from '../components/ThemeToggle';
 
 const StudentDashboard = () => {
   const [events, setEvents] = useState([]);
@@ -193,7 +194,7 @@ const StudentDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-yellow-50 relative overflow-hidden">
+    <div className="min-h-screen bg-yellow-50 dark:bg-gray-900 relative overflow-hidden transition-colors duration-300">
       {/* Background decorative elements */}
       <div className="absolute top-20 right-20 w-64 h-64 bg-yellow-200/20 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 left-20 w-48 h-48 bg-orange-200/20 rounded-full blur-2xl"></div>
@@ -213,18 +214,19 @@ const StudentDashboard = () => {
             <div className="flex items-center space-x-3">
               <Link 
                 to="/events" 
-                className="bg-gradient-to-r from-blue-100 to-blue-200 hover:from-blue-200 hover:to-blue-300 text-blue-900 px-4 py-2 rounded-lg font-medium transition-all duration-300 flex items-center shadow-sm border border-blue-200/50"
+                className="bg-gradient-to-r from-blue-100 to-blue-200 hover:from-blue-200 hover:to-blue-300 dark:from-blue-800 dark:to-blue-700 dark:hover:from-blue-700 dark:hover:to-blue-600 text-blue-900 dark:text-blue-100 px-4 py-2 rounded-lg font-medium transition-all duration-300 flex items-center shadow-sm border border-blue-200/50 dark:border-blue-600/50"
               >
                 <Calendar className="w-4 h-4 mr-2" />
                 📅 Ver Eventos
               </Link>
               <Link 
                 to="/polls" 
-                className="bg-gradient-to-r from-orange-100 to-orange-200 hover:from-orange-200 hover:to-orange-300 text-orange-900 px-4 py-2 rounded-lg font-medium transition-all duration-300 flex items-center shadow-sm border border-orange-200/50"
+                className="bg-gradient-to-r from-orange-100 to-orange-200 hover:from-orange-200 hover:to-orange-300 dark:from-orange-800 dark:to-orange-700 dark:hover:from-orange-700 dark:hover:to-orange-600 text-orange-900 dark:text-orange-100 px-4 py-2 rounded-lg font-medium transition-all duration-300 flex items-center shadow-sm border border-orange-200/50 dark:border-orange-600/50"
               >
                 <TrendingUp className="w-4 h-4 mr-2" />
                 📊 Participar Enquetes
               </Link>
+              <ThemeToggle variant="compact" />
               <LogoutButton variant="default" size="medium" showIcon={false} />
             </div>
           </div>
