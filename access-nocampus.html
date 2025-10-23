@@ -3,89 +3,306 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NoCampus - Redirecionamento</title>
+    <title>🎓 NOCAMPUS - Portal de Acesso</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+        
         .container {
             background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 15px;
             backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
         }
-        .logo {
-            font-size: 3rem;
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .status {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 10px;
             font-weight: bold;
-            margin-bottom: 1rem;
         }
-        .logo .no { color: #4299e1; }
-        .logo .campus { color: #f6ad55; }
-        .links {
-            margin-top: 2rem;
+        
+        .status.checking {
+            background: rgba(255, 193, 7, 0.3);
+            border: 1px solid rgba(255, 193, 7, 0.5);
         }
-        .link {
-            display: inline-block;
-            margin: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            text-decoration: none;
-            color: white;
+        
+        .status.online {
+            background: rgba(40, 167, 69, 0.3);
+            border: 1px solid rgba(40, 167, 69, 0.5);
+        }
+        
+        .status.offline {
+            background: rgba(220, 53, 69, 0.3);
+            border: 1px solid rgba(220, 53, 69, 0.5);
+        }
+        
+        .access-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
             transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
         }
-        .link:hover {
-            background: rgba(255, 255, 255, 0.3);
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+        }
+        
+        .btn-primary:hover {
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
         }
+        
+        .btn-secondary {
+            background: linear-gradient(45deg, #6c757d, #495057);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.4);
+        }
+        
+        .btn-warning {
+            background: linear-gradient(45deg, #ffc107, #fd7e14);
+            color: #212529;
+        }
+        
+        .btn-warning:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
         .instructions {
-            margin-top: 2rem;
-            font-size: 0.9rem;
-            opacity: 0.8;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            text-align: left;
+        }
+        
+        .instructions h3 {
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .instructions ol {
+            padding-left: 20px;
+        }
+        
+        .instructions li {
+            margin: 8px 0;
+            opacity: 0.9;
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .footer {
+            margin-top: 30px;
+            opacity: 0.7;
+            font-size: 0.9em;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="logo">
-            <span class="no">No</span><span class="campus">Campus</span>
+        <h1>🎓 NOCAMPUS</h1>
+        <p class="subtitle">Instituto de Ensino Adventista - Portal Educacional</p>
+        
+        <div class="status checking" id="status">
+            <div class="loading"></div>
+            Verificando conexão com o servidor...
         </div>
         
-        <h2>Acesso ao Sistema</h2>
-        
-        <div class="links">
-            <a href="http://localhost:5173/" class="link">🏠 Página Principal</a>
-            <a href="http://localhost:5173/admin/dashboard" class="link">👨‍💼 Admin Dashboard</a>
-            <a href="http://localhost:5173/student/dashboard" class="link">👨‍🎓 Dashboard Estudante</a>
-            <a href="http://localhost:5173/guardian/dashboard" class="link">👨‍👩‍👧‍👦 Dashboard Responsável</a>
+        <div class="access-buttons">
+            <a href="http://localhost:5173" class="btn btn-primary" id="btn5173" target="_blank">
+                🚀 Acessar NOCAMPUS (Porta 5173)
+            </a>
+            
+            <a href="http://localhost:3000" class="btn btn-secondary" id="btn3000" target="_blank">
+                � Acessar NOCAMPUS (Porta 3000)
+            </a>
+            
+            <button class="btn btn-warning" id="btnDiagnostic" onclick="showInstructions()">
+                🔧 Ver Instruções de Solução
+            </button>
         </div>
         
-        <div class="instructions">
-            <p><strong>Instruções:</strong></p>
-            <p>1. Certifique-se de que o servidor está rodando (npm run dev)</p>
-            <p>2. Clique nos links acima para acessar as diferentes páginas</p>
-            <p>3. Se houver problemas, reinicie o servidor</p>
+        <div class="instructions" id="instructions" style="display: none;">
+            <h3>�️ Se o site não abrir:</h3>
+            <ol>
+                <li><strong>Abra o VS Code</strong> na pasta do projeto</li>
+                <li><strong>Abra o terminal</strong> (Ctrl + `)</li>
+                <li><strong>Execute:</strong> <code>npm run dev</code></li>
+                <li><strong>Aguarde</strong> aparecer a mensagem "Local: http://localhost:5173/"</li>
+                <li><strong>Clique no botão</strong> "Acessar NOCAMPUS" acima</li>
+            </ol>
+            <br>
+            <h3>🚨 Se ainda não funcionar:</h3>
+            <ol>
+                <li><strong>Feche o terminal</strong> com Ctrl+C</li>
+                <li><strong>Execute:</strong> <code>taskkill /F /IM node.exe</code></li>
+                <li><strong>Aguarde 3 segundos</strong></li>
+                <li><strong>Execute novamente:</strong> <code>npm run dev</code></li>
+            </ol>
+            <br>
+            <p><strong>💡 Dica:</strong> Execute o script <code>diagnostico-servidor.ps1</code> para solução automática!</p>
         </div>
         
-        <script>
-            // Verificar se o servidor está rodando
-            fetch('http://localhost:5173/')
-                .then(() => {
-                    document.querySelector('.instructions').innerHTML += '<p style="color: #48bb78;">✅ Servidor está online!</p>';
-                })
-                .catch(() => {
-                    document.querySelector('.instructions').innerHTML += '<p style="color: #f56565;">❌ Servidor offline. Execute: npm run dev</p>';
-                });
-        </script>
+        <div class="footer">
+            <p>Sistema Educacional Integrado | Desenvolvido com ❤️</p>
+            <p>Para suporte técnico, consulte: <strong>SOLUCOES_LOCALHOST.md</strong></p>
+        </div>
     </div>
+
+    <script>
+        // Função para verificar se o servidor está online
+        async function checkServer(port) {
+            try {
+                const response = await fetch(`http://localhost:${port}`, {
+                    method: 'GET',
+                    mode: 'no-cors',
+                    cache: 'no-cache'
+                });
+                return true;
+            } catch (error) {
+                return false;
+            }
+        }
+
+        // Função para verificar conectividade
+        async function checkConnectivity() {
+            const statusEl = document.getElementById('status');
+            const btn5173 = document.getElementById('btn5173');
+            const btn3000 = document.getElementById('btn3000');
+            
+            // Verificar porta 5173
+            const server5173 = await checkServer(5173);
+            
+            // Verificar porta 3000
+            const server3000 = await checkServer(3000);
+            
+            if (server5173) {
+                statusEl.className = 'status online';
+                statusEl.innerHTML = '✅ Servidor online na porta 5173!';
+                btn5173.style.opacity = '1';
+                btn5173.removeAttribute('disabled');
+            } else if (server3000) {
+                statusEl.className = 'status online';
+                statusEl.innerHTML = '✅ Servidor online na porta 3000!';
+                btn3000.style.opacity = '1';
+                btn3000.removeAttribute('disabled');
+            } else {
+                statusEl.className = 'status offline';
+                statusEl.innerHTML = '❌ Servidor offline - Execute npm run dev no VS Code';
+                btn5173.style.opacity = '0.6';
+                btn3000.style.opacity = '0.6';
+                btn5173.setAttribute('disabled', 'true');
+                btn3000.setAttribute('disabled', 'true');
+                
+                // Mostrar instruções automaticamente se offline
+                setTimeout(() => {
+                    showInstructions();
+                }, 2000);
+            }
+        }
+
+        // Função para mostrar/esconder instruções
+        function showInstructions() {
+            const instructions = document.getElementById('instructions');
+            if (instructions.style.display === 'none') {
+                instructions.style.display = 'block';
+            } else {
+                instructions.style.display = 'none';
+            }
+        }
+
+        // Verificar conectividade ao carregar a página
+        window.addEventListener('load', () => {
+            setTimeout(checkConnectivity, 1000);
+            
+            // Verificar novamente a cada 10 segundos
+            setInterval(checkConnectivity, 10000);
+        });
+
+        // Adicionar eventos de clique nos botões desabilitados
+        document.getElementById('btn5173').addEventListener('click', function(e) {
+            if (this.hasAttribute('disabled')) {
+                e.preventDefault();
+                alert('⚠️ Servidor offline!\n\nExecute "npm run dev" no VS Code primeiro.');
+                showInstructions();
+            }
+        });
+
+        document.getElementById('btn3000').addEventListener('click', function(e) {
+            if (this.hasAttribute('disabled')) {
+                e.preventDefault();
+                alert('⚠️ Servidor offline!\n\nExecute "npm run dev" no VS Code primeiro.');
+                showInstructions();
+            }
+        });
+    </script>
 </body>
 </html>
