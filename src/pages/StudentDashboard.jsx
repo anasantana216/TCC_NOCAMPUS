@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, Clock, Users, BookOpen, Bell, TrendingUp, ChevronRight, MapPin, Star, CheckCircle, AlertCircle, Info } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { eventsAPI, pollsAPI } from '../services/api';
 import LogoutButton from '../components/LogoutButton';
 
@@ -209,9 +210,21 @@ const StudentDashboard = () => {
               <span className="text-gray-300">|</span>
               <span className="text-blue-900 font-medium">Dashboard do Estudante</span>
             </div>
-            <div className="flex items-center space-x-4">
-              <a href="/events" className="text-blue-900 hover:text-orange-500 transition-colors font-medium">Eventos</a>
-              <a href="/polls" className="text-blue-900 hover:text-orange-500 transition-colors font-medium">Enquetes</a>
+            <div className="flex items-center space-x-3">
+              <Link 
+                to="/events" 
+                className="bg-gradient-to-r from-blue-100 to-blue-200 hover:from-blue-200 hover:to-blue-300 text-blue-900 px-4 py-2 rounded-lg font-medium transition-all duration-300 flex items-center shadow-sm border border-blue-200/50"
+              >
+                <Calendar className="w-4 h-4 mr-2" />
+                📅 Ver Eventos
+              </Link>
+              <Link 
+                to="/polls" 
+                className="bg-gradient-to-r from-orange-100 to-orange-200 hover:from-orange-200 hover:to-orange-300 text-orange-900 px-4 py-2 rounded-lg font-medium transition-all duration-300 flex items-center shadow-sm border border-orange-200/50"
+              >
+                <TrendingUp className="w-4 h-4 mr-2" />
+                📊 Participar Enquetes
+              </Link>
               <LogoutButton variant="default" size="medium" showIcon={false} />
             </div>
           </div>
@@ -539,14 +552,14 @@ const StudentDashboard = () => {
                 ⚡ Ações Rápidas
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                <a href="/events" className="flex flex-col items-center p-4 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl hover:from-blue-200 hover:to-blue-300 transition-all cursor-pointer">
+                <Link to="/events" className="flex flex-col items-center p-4 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl hover:from-blue-200 hover:to-blue-300 transition-all cursor-pointer shadow-md hover:shadow-lg transform hover:scale-105">
                   <Calendar className="w-8 h-8 text-blue-900 mb-2" />
-                  <span className="text-sm font-bold text-blue-900">Ver Eventos</span>
-                </a>
-                <a href="/polls" className="flex flex-col items-center p-4 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-xl hover:from-yellow-200 hover:to-yellow-300 transition-all cursor-pointer">
+                  <span className="text-sm font-bold text-blue-900">📅 Ver Eventos</span>
+                </Link>
+                <Link to="/polls" className="flex flex-col items-center p-4 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-xl hover:from-yellow-200 hover:to-yellow-300 transition-all cursor-pointer shadow-md hover:shadow-lg transform hover:scale-105">
                   <TrendingUp className="w-8 h-8 text-orange-700 mb-2" />
-                  <span className="text-sm font-bold text-orange-700">Enquetes</span>
-                </a>
+                  <span className="text-sm font-bold text-orange-700">📊 Votar Enquetes</span>
+                </Link>
                 <button 
                   onClick={() => window.open('https://biblioteca.unasp.edu.br', '_blank')}
                   className="flex flex-col items-center p-4 bg-gradient-to-br from-amber-100 to-amber-200 rounded-xl hover:from-amber-200 hover:to-amber-300 transition-all"
