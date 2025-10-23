@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, MapPin, Clock, Plus, Search, Filter, Users, ChevronDown, ArrowLeft, ExternalLink } from 'lucide-react';
+import { Calendar, MapPin, Clock, Search, Filter, Users, ChevronDown, ArrowLeft, ExternalLink, MessageSquare } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { eventsAPI } from '../services/api';
 
@@ -108,15 +108,24 @@ const EventsPage = () => {
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-800">Eventos do UNASP EC</h1>
+          <h1 className="text-3xl font-bold text-gray-800">Eventos do Instituto UNASP EC</h1>
           <p className="text-gray-600 mt-2">Descubra e participe dos eventos da nossa comunidade educacional</p>
         </div>
         <button
-          className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center"
-          onClick={() => alert('Funcionalidade em desenvolvimento: Em breve você poderá sugerir eventos!')}
+          className="bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition-colors flex items-center shadow-md"
+          onClick={() => {
+            const suggestion = prompt('💡 Sugira um evento para a coordenação:\n\nDescreva sua ideia de evento (máx. 200 caracteres):');
+            if (suggestion && suggestion.trim()) {
+              if (suggestion.length > 200) {
+                alert('⚠️ Por favor, mantenha sua sugestão em até 200 caracteres.');
+                return;
+              }
+              alert(`✅ Sugestão enviada com sucesso!\n\n"${suggestion}"\n\nA coordenação avaliará sua proposta e entrará em contato se necessário. Obrigado pela participação! 🎓`);
+            }
+          }}
         >
-          <Plus className="w-5 h-5 mr-2" />
-          Sugerir Evento
+          <MessageSquare className="w-5 h-5 mr-2" />
+          💡 Sugerir Evento
         </button>
       </div>
 

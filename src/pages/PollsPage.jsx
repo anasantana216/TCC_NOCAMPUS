@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BarChart3, Users, CheckCircle, Plus, TrendingUp, MessageSquare } from 'lucide-react';
+import { BarChart3, Users, CheckCircle, TrendingUp, MessageSquare } from 'lucide-react';
 import { pollsAPI } from '../services/api';
 
 const PollsPage = () => {
@@ -88,18 +88,11 @@ const PollsPage = () => {
   return (
     <div className="py-8">
       {/* Header */}
-      <div className="flex justify-between items-center mb-8">
+      <div className="mb-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-800">Enquetes da Comunidade</h1>
-          <p className="text-gray-600 mt-2">Participe e veja a opinião da comunidade UNASP EC</p>
+          <p className="text-gray-600 mt-2">Participe e veja a opinião da comunidade educacional do Instituto UNASP EC</p>
         </div>
-        <button
-          className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors flex items-center"
-          onClick={() => alert('Funcionalidade em desenvolvimento')}
-        >
-          <Plus className="w-5 h-5 mr-2" />
-          Criar Enquete
-        </button>
       </div>
 
       {/* Error Message */}
