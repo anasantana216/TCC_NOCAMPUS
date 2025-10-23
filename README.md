@@ -1,6 +1,6 @@
 # NoCampus UNASP - Sistema Multi-Usuário de Eventos e Enquetes
 
-Uma plataforma web completa para gerenciar eventos e enquetes no Centro Universitário Adventista de Engenheiro Coelho - UNASP, com dashboards específicos para diferentes tipos de usuários.
+Uma plataforma web completa para gerenciar eventos e enquetes no Instituto de Ensino Adventista de Engenheiro Coelho - UNASP, atendendo estudantes da educação básica e ensino superior, com dashboards específicos para diferentes tipos de usuários.
 
 ## 🚀 Início Rápido
 

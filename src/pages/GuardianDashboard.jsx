@@ -61,7 +61,7 @@ const GuardianDashboard = () => {
       title: "Semana de Provas - P2",
       date: "25/10/2024 - 01/11/2024",
       time: "08:00 - 12:00",
-      location: "Campus UNASP-EC",
+      location: "Instituto UNASP-EC",
       type: "academic",
       description: "Segunda avaliação do semestre"
     },

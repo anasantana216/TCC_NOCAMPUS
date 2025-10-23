@@ -29,7 +29,7 @@ const Layout = ({ children }) => {
                 <span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">Campus</span>
               </div>
               <div className="ml-3 text-sm text-blue-700 font-medium hidden sm:block bg-gradient-to-r from-blue-50 to-orange-50 px-3 py-1 rounded-full border border-blue-200/50">
-                Centro Universitário Adventista de Engenheiro Coelho
+                Instituto de Ensino Adventista de Engenheiro Coelho
               </div>
             </Link>
 
@@ -128,10 +128,10 @@ const Layout = ({ children }) => {
             <span className="text-yellow-400">Campus</span>
           </div>
           <p className="text-blue-200 mb-4 text-lg">
-            🎓 Conectando estudantes através de eventos e experiências
+            🎓 Conectando estudantes de todos os níveis através de eventos e experiências
           </p>
           <p className="text-orange-300 font-bold mb-6 text-lg bg-blue-800 py-2 px-4 rounded-full inline-block">
-            Centro Universitário Adventista de Engenheiro Coelho - UNASP
+            Instituto de Ensino Adventista de Engenheiro Coelho - UNASP
           </p>
           <p className="text-blue-300 text-sm">
             © 2025 <span className="text-blue-300">No</span><span className="text-yellow-400">Campus</span> UNASP EC. Todos os direitos reservados.

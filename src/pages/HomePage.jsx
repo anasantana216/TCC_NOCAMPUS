@@ -19,10 +19,10 @@ const HomePage = () => {
             🎓 Bem-vindo ao <span className="bg-gradient-to-r from-blue-900 to-indigo-800 bg-clip-text text-transparent">No</span><span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">Campus</span>
           </h1>
           <p className="text-xl text-blue-700 mb-6 max-w-3xl mx-auto leading-relaxed">
-            Sua plataforma central para descobrir eventos, participar de enquetes e conectar-se com a comunidade universitária do UNASP EC.
+            Sua plataforma central para descobrir eventos, participar de enquetes e conectar-se com toda a comunidade educacional do UNASP EC.
           </p>
           <p className="text-lg text-orange-600 font-bold mb-8 bg-gradient-to-r from-orange-50 to-yellow-50 py-3 px-6 rounded-full inline-block shadow-md border border-orange-200/50">
-            Centro Universitário Adventista de Engenheiro Coelho - UNASP
+            Instituto de Ensino Adventista de Engenheiro Coelho - UNASP
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
@@ -55,7 +55,7 @@ const HomePage = () => {
           </div>
           <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-900 to-indigo-800 bg-clip-text text-transparent mb-4">🔐 Acesso Restrito</h2>
           <p className="text-blue-700 mb-8 max-w-2xl mx-auto text-lg leading-relaxed">
-            Para acessar eventos, participar de enquetes e interagir com a comunidade universitária, 
+            Para acessar eventos, participar de enquetes e interagir com a comunidade educacional, 
             é necessário fazer login com suas credenciais do UNASP EC.
           </p>
           <Link
@@ -84,21 +84,21 @@ const HomePage = () => {
                 <Target className="w-12 h-12 text-blue-900 group-hover:scale-110 transition-transform duration-300" />
               </div>
               <h3 className="text-xl font-bold bg-gradient-to-r from-blue-900 to-indigo-800 bg-clip-text text-transparent mb-4">🎯 Eventos Personalizados</h3>
-              <p className="text-blue-700 leading-relaxed">Faça login para descobrir eventos que combinam com seus interesses e área de estudo no UNASP EC.</p>
+              <p className="text-blue-700 leading-relaxed">Faça login para descobrir eventos que combinam com seus interesses e área de estudo no Instituto UNASP EC.</p>
             </div>
             <div className="text-center bg-gradient-to-br from-white to-orange-50/50 rounded-3xl shadow-xl p-8 border border-orange-200/30 hover:shadow-2xl transition-all duration-300 transform hover:scale-105 group">
               <div className="bg-gradient-to-br from-orange-100 via-orange-200 to-yellow-200 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300 border-4 border-white/50">
                 <Bell className="w-12 h-12 text-orange-600 group-hover:scale-110 transition-transform duration-300" />
               </div>
               <h3 className="text-xl font-bold bg-gradient-to-r from-orange-600 to-yellow-600 bg-clip-text text-transparent mb-4">📢 Participação Ativa</h3>
-              <p className="text-blue-700 leading-relaxed">Faça login para participar de enquetes e contribuir para as decisões da comunidade universitária.</p>
+              <p className="text-blue-700 leading-relaxed">Faça login para participar de enquetes e contribuir para as decisões da comunidade educacional.</p>
             </div>
             <div className="text-center bg-gradient-to-br from-white to-yellow-50/50 rounded-3xl shadow-xl p-8 border border-yellow-200/30 hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:rotate-1 group">
               <div className="bg-gradient-to-br from-yellow-100 via-yellow-200 to-orange-200 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300 border-4 border-white/50">
                 <Users className="w-12 h-12 text-yellow-700 group-hover:scale-110 transition-transform duration-300" />
               </div>
               <h3 className="text-xl font-bold bg-gradient-to-r from-yellow-600 to-orange-600 bg-clip-text text-transparent mb-4">👥 Comunidade</h3>
-              <p className="text-blue-700 leading-relaxed">Conecte-se com outros estudantes e construa relacionamentos duradouros.</p>
+              <p className="text-blue-700 leading-relaxed">Conecte-se com outros estudantes de todos os níveis de ensino e construa relacionamentos duradouros.</p>
             </div>
           </div>
         </div>

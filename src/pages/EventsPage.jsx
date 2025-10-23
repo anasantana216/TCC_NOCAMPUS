@@ -109,7 +109,7 @@ const EventsPage = () => {
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-800">Eventos do UNASP EC</h1>
-          <p className="text-gray-600 mt-2">Descubra e participe dos eventos da nossa comunidade universitária</p>
+          <p className="text-gray-600 mt-2">Descubra e participe dos eventos da nossa comunidade educacional</p>
         </div>
         <button
           className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center"

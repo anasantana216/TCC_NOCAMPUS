@@ -110,7 +110,7 @@ const LoginPage = () => {
             🔑 Entre na sua conta
           </h2>
           <p className="mt-4 text-center text-sm text-orange-600 font-semibold bg-gradient-to-r from-orange-50 to-yellow-50 py-3 px-6 rounded-full border border-orange-200/50 shadow-md">
-            Centro Universitário Adventista de Engenheiro Coelho - UNASP
+            Instituto de Ensino Adventista de Engenheiro Coelho - UNASP
           </p>
         </div>
       </div>
